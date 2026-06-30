@@ -16,39 +16,45 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 :root{
-  --bg:#0E0B08;
-  --s1:#181208;
-  --s2:#221A10;
-  --card:#F4ECD8;
-  --card2:#EAE0C8;
-  --br:#3D1F0A;
-  --br2:#6B3A1F;
-  --gold:#C8972A;
-  --gold2:#E8B84B;
-  --cream:#F4ECD8;
-  --td:#1A0C04;
-  --ts:#4A2A0A;
-  --tm:#7A5030;
-  --tl:#F0E6D0;
-  --tll:#B8A080;
-  --grn:#1A5C2E;
-  --grn-bg:#D4EDDA;
-  --amb:#7A4A00;
-  --amb-bg:#FDE8C0;
-  --red:#8B1A1A;
-  --red-bg:#FAD4D0;
-  --brd:rgba(200,151,42,.15);
-  --header-bg:rgba(10,7,4,.98);
-  --header-text:#F4ECD8;
-  --header-text-muted:#B8A080;
-  --modal-bg:#1A1208;
-  --modal-text:#F4ECD8;
-  --modal-text-muted:#B8A080;
-  --modal-border:rgba(200,151,42,.18);
-  --input-bg:rgba(244,236,216,.06);
-  --chip-bg:rgba(244,236,216,.05);
-  --modal-overlay:rgba(244,236,216,.07);
-  --modal-overlay-soft:rgba(244,236,216,.05);
+  --bg:#1C140B;
+  --s1:#251B0F;
+  --s2:#2E2113;
+  --card:#564024;
+  --card2:#64492A;
+  --gold:#D9A53C;
+  --gold2:#F0C264;
+  --cream:#F5ECDA;
+  --td:#F5ECDA;
+  --ts:#E8D9BC;
+  --tm:#C2A87E;
+  --tl:#F5ECDA;
+  --tll:#B89D74;
+  --grn:#5FD089;
+  --grn-bg:rgba(95,208,137,.14);
+  --amb:#F0B23C;
+  --amb-bg:rgba(240,178,60,.14);
+  --red:#F0786B;
+  --red-bg:rgba(240,120,107,.14);
+  --prod1:#C9A876;
+  --prod3:#E08A52;
+  --brd:rgba(217,165,60,.18);
+  --header-bg:rgba(20,14,8,.98);
+  --header-text:#F5ECDA;
+  --header-text-muted:#B89D74;
+  --modal-bg:#241A0F;
+  --modal-text:#F5ECDA;
+  --modal-text-muted:#B89D74;
+  --modal-border:rgba(217,165,60,.2);
+  --input-bg:#1A120A;
+  --input-text:#F5ECDA;
+  --input-border:rgba(217,165,60,.22);
+  --input-placeholder:#8A7355;
+  --chip-bg:rgba(245,236,218,.06);
+  --modal-overlay:rgba(245,236,218,.08);
+  --modal-overlay-soft:rgba(245,236,218,.05);
+  --track-bg:rgba(245,236,218,.16);
+  --btn-light-bg:rgba(245,236,218,.14);
+  --btn-light-border:rgba(245,236,218,.22);
 }
 [data-theme="light"]{
   --bg:#F5EFE2;
@@ -72,6 +78,8 @@
   --amb-bg:#FDE8C0;
   --red:#8B1A1A;
   --red-bg:#FAD4D0;
+  --prod1:#8B6340;
+  --prod3:#B5562E;
   --brd:rgba(61,31,10,.22);
   --header-bg:rgba(247,241,228,.97);
   --header-text:#3D1F0A;
@@ -81,9 +89,15 @@
   --modal-text-muted:#7A5030;
   --modal-border:rgba(61,31,10,.18);
   --input-bg:rgba(61,31,10,.06);
+  --input-text:#1A0C04;
+  --input-border:rgba(61,31,10,.18);
+  --input-placeholder:#9C8567;
   --chip-bg:rgba(61,31,10,.05);
   --modal-overlay:rgba(61,31,10,.07);
   --modal-overlay-soft:rgba(61,31,10,.05);
+  --track-bg:rgba(61,31,10,.13);
+  --btn-light-bg:rgba(61,31,10,.08);
+  --btn-light-border:rgba(61,31,10,.2);
 }
 [data-theme="light"] body{background:#F5EFE2 !important;}
 [data-theme="light"] #main{background:#F5EFE2 !important;}
@@ -190,7 +204,7 @@ body::before{
 .btn-primary{background:var(--br);color:#F4ECD8;}
 .btn-secondary{background:var(--modal-overlay);color:var(--modal-text);border:1px solid var(--modal-border);}
 .btn-secondary-page{background:var(--input-bg);color:var(--tl);border:1px solid var(--brd);}
-.btn-secondary-light{background:rgba(90,58,26,.08);color:var(--td);border:1px solid rgba(90,58,26,.2);font-weight:700;}
+.btn-secondary-light{background:var(--btn-light-bg);color:var(--td);border:1px solid var(--btn-light-border);font-weight:700;}
 .btn-green{background:var(--grn-bg);color:var(--grn);}
 .btn-wa{background:#25D366;color:#fff;}
 .btn-danger{background:var(--red-bg);color:var(--red);}
@@ -200,16 +214,21 @@ body::before{
 .btn-sm-del{background:var(--red-bg);color:var(--red);}
 
 /* ── INPUTS ── */
-.inp{width:100%;padding:11px 13px;border:1px solid var(--brd);border-radius:9px;font-size:14px;color:var(--tl);background:var(--input-bg);outline:none;font-family:"DM Sans",sans-serif;-webkit-appearance:none;transition:.12s;}
+.inp{width:100%;padding:11px 13px;border:1px solid var(--input-border);border-radius:9px;font-size:14px;color:var(--input-text);background:var(--input-bg);outline:none;font-family:"DM Sans",sans-serif;-webkit-appearance:none;transition:.12s;}
 .inp:focus{border-color:var(--gold);}
+.inp::placeholder{color:var(--input-placeholder);}
 .lbl{display:block;font-size:10px;font-weight:600;color:var(--modal-text-muted);margin-bottom:6px;letter-spacing:.8px;text-transform:uppercase;}
 .fg{margin-bottom:14px;}
+/* dropdown nativo do navegador renderiza as <option> com fundo branco do
+   sistema operacional, independente do tema da pagina; forcamos texto escuro
+   em todas elas para garantir contraste nesse contexto especifico. */
+select.inp option{color:#2A1606;background:#FFFFFF;}
 
 /* ── CHIPS ── */
 .chips{display:flex;flex-wrap:wrap;gap:6px;}
 .chip{padding:7px 13px;border-radius:99px;border:1px solid var(--brd);background:var(--chip-bg);color:var(--tll);font-size:13px;font-weight:500;cursor:pointer;transition:.12s;}
 .chip-modal{padding:7px 13px;border-radius:99px;border:1px solid var(--modal-border);background:var(--modal-overlay-soft);color:var(--modal-text-muted);font-size:13px;font-weight:500;cursor:pointer;transition:.12s;}
-.chip-modal.on{background:var(--gold);color:#1A0C04;border-color:var(--gold);font-weight:700;}
+.chip-modal.on{background:var(--gold);color:#241704;border-color:var(--gold);font-weight:700;}
 .chip.on{background:var(--br);color:#F4ECD8;border-color:var(--br);font-weight:600;}
 
 /* ── TYPE SELECTOR ── */
@@ -226,7 +245,7 @@ body::before{
 #ov.on{display:flex;}
 #modal{background:var(--modal-bg);border-radius:20px 20px 0 0;padding:18px 16px calc(32px + env(safe-area-inset-bottom,0px));width:100%;max-width:430px;max-height:88vh;overflow-y:auto;border-top:1px solid var(--brd);}
 [data-theme="light"] #modal{background:#FBF7EE !important;--modal-text:#1A0C04 !important;--modal-text-muted:#7A5030 !important;--modal-overlay:rgba(61,31,10,.07) !important;--modal-overlay-soft:rgba(61,31,10,.05) !important;--modal-border:rgba(61,31,10,.18) !important;}
-[data-theme="dark"] #modal{background:#1A1208 !important;}
+[data-theme="dark"] #modal{background:#241A0F !important;}
 .modal-handle{width:40px;height:3px;border-radius:2px;background:rgba(200,151,42,.3);margin:0 auto 18px;}
 .modal-title{font-family:"Baloo 2",sans-serif;font-size:20px;font-weight:700;color:var(--modal-text);margin-bottom:18px;}
 
@@ -253,7 +272,7 @@ body::before{
 .stat-card.amb .stat-card-val{color:var(--amb);}
 
 /* ── PROGRESS BAR ── */
-.pbar{height:6px;background:rgba(90,58,26,.15);border-radius:3px;overflow:hidden;margin-top:6px;}
+.pbar{height:6px;background:var(--track-bg);border-radius:3px;overflow:hidden;margin-top:6px;}
 .pbar-fill{height:100%;border-radius:3px;background:var(--gold);transition:width .4s;}
 
 /* ── AVATAR ── */
@@ -281,7 +300,60 @@ body::before{
 /* ── SCROLL LIST ── */
 .scroll-x{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;}
 .scroll-x::-webkit-scrollbar{display:none;}
+
+/* ── PRECIFICACAO: SUBTABS ── */
+.subtabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch;margin-bottom:4px;}
+.subtabs::-webkit-scrollbar{display:none;}
+.subtab{flex-shrink:0;padding:8px 14px;border-radius:99px;background:var(--chip-bg);border:1px solid var(--brd);color:var(--tll);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.12s;}
+.subtab.on{background:var(--br);color:#F4ECD8;border-color:var(--br);}
+.ing-row{display:flex;justify-content:space-between;align-items:center;background:var(--card);border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+.ing-row-info{flex:1;min-width:0;}
+.ing-row-name{font-size:14px;font-weight:600;color:var(--td);}
+.ing-row-sub{font-size:11px;color:var(--tm);margin-top:2px;}
+.resumo-line{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(90,58,26,.1);}
+.resumo-line:last-child{border-bottom:none;}
+.resumo-line .lbl2{font-size:12px;color:var(--tm);}
+.resumo-line .val2{font-size:15px;font-weight:700;color:var(--td);}
+.resumo-line.total .val2{font-size:20px;color:var(--gold2);}
+.lucro-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.lucro-card{background:var(--grn-bg);border-radius:10px;padding:10px 12px;}
+.lucro-card .lbl{color:var(--grn);opacity:.8;margin-bottom:3px;}
+.lucro-card .val{font-family:"Baloo 2",sans-serif;font-size:16px;font-weight:700;color:var(--grn);}
+.lucro-card.neg{background:var(--red-bg);}
+.lucro-card.neg .lbl,.lucro-card.neg .val{color:var(--red);}
+
+/* ── MENU "MAIS" (SIDE DRAWER) ── */
+#sd-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;}
+#sd-ov.on{display:block;}
+#sd{
+  position:fixed;top:0;left:0;height:100%;width:78%;max-width:300px;
+  background:var(--modal-bg);
+  transform:translateX(-100%);transition:transform .22s ease;
+  z-index:301;display:flex;flex-direction:column;
+  box-shadow:2px 0 24px rgba(0,0,0,.25);
+}
+#sd.on{transform:translateX(0);}
+#sd-hd{
+  padding:calc(18px + env(safe-area-inset-top,0px)) 18px 16px;
+  border-bottom:1px solid var(--modal-border);
+  flex-shrink:0;
+}
+#sd-hd .sd-title{font-family:"Baloo 2",sans-serif;font-size:18px;font-weight:700;color:var(--modal-text);}
+#sd-hd .sd-sub{font-size:10px;color:var(--modal-text-muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+#sd-list{flex:1;overflow-y:auto;padding:10px;}
+.sd-item{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 12px;border-radius:12px;cursor:pointer;
+  color:var(--modal-text);transition:.12s;
+}
+.sd-item.on{background:var(--modal-overlay);}
+.sd-item-ico{width:22px;height:22px;flex-shrink:0;color:var(--modal-text-muted);display:flex;align-items:center;justify-content:center;}
+.sd-item.on .sd-item-ico{color:var(--gold2);}
+.sd-item-ico svg{width:100%;height:100%;}
+.sd-item-lbl{font-size:14px;font-weight:600;}
+.sd-item.on .sd-item-lbl{color:var(--gold2);}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -332,34 +404,76 @@ body::before{
     <div class="sect">Estoque</div>
   </div>
 
+  <!-- PRECIFICACAO -->
+  <div class="pg" id="pgp">
+    <div class="sect">Precificação</div>
+  </div>
+
+  <!-- DESPESAS GERAIS -->
+  <div class="pg" id="pgg">
+    <div class="sect">Despesas</div>
+  </div>
+
+  <!-- RELATORIOS -->
+  <div class="pg" id="pgt">
+    <div class="sect">Relatórios</div>
+  </div>
+
 </div>
 
 <!-- TAB BAR -->
 <div id="tb">
-  <div class="ti on" onclick="ir('d')">
+  <div class="ti on" id="tb-d" onclick="ir('d')">
     <div class="ti-bar"></div>
     <div class="ti-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4M16 2v4"/></svg></div>
     <div class="ti-lbl">Diario</div>
   </div>
-  <div class="ti" onclick="ir('c')">
+  <div class="ti" id="tb-c" onclick="ir('c')">
     <div class="ti-bar"></div>
     <div class="ti-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
     <div class="ti-lbl">Clientes</div>
   </div>
-  <div class="ti" onclick="ir('r')">
-    <div class="ti-bar"></div>
-    <div class="ti-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
-    <div class="ti-lbl">Resumo</div>
-  </div>
-  <div class="ti" onclick="ir('a')">
+  <div class="ti" id="tb-a" onclick="ir('a')">
     <div class="ti-bar"></div>
     <div class="ti-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
     <div class="ti-lbl">Nova Venda</div>
   </div>
-  <div class="ti" onclick="ir('e')">
+  <div class="ti" id="tb-r" onclick="ir('r')">
     <div class="ti-bar"></div>
-    <div class="ti-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
-    <div class="ti-lbl">Estoque</div>
+    <div class="ti-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
+    <div class="ti-lbl">Resumo</div>
+  </div>
+  <div class="ti" id="tb-mais" onclick="abrirMais()">
+    <div class="ti-bar"></div>
+    <div class="ti-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+    <div class="ti-lbl">Mais</div>
+  </div>
+</div>
+
+<!-- MENU MAIS (SIDE DRAWER) -->
+<div id="sd-ov" onclick="fecharMais()"></div>
+<div id="sd">
+  <div id="sd-hd">
+    <div class="sd-title">Mais opções</div>
+    <div class="sd-sub">Brownielícia</div>
+  </div>
+  <div id="sd-list">
+    <div class="sd-item" id="sd-e" onclick="irDoMenu('e')">
+      <div class="sd-item-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
+      <div class="sd-item-lbl">Estoque</div>
+    </div>
+    <div class="sd-item" id="sd-p" onclick="irDoMenu('p')">
+      <div class="sd-item-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12.5 10h2M17 10h0M8 14h2M12.5 14h2M17 14h0M8 18h2M12.5 18h2M17 18h0"/></svg></div>
+      <div class="sd-item-lbl">Preços</div>
+    </div>
+    <div class="sd-item" id="sd-g" onclick="irDoMenu('g')">
+      <div class="sd-item-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1.4 1.3-2.5 3-2.5s3 .9 3 2c0 2.5-6 1.5-6 4.5 0 1.4 1.3 2.5 3 2.5s3-1.1 3-2.5"/></svg></div>
+      <div class="sd-item-lbl">Despesas</div>
+    </div>
+    <div class="sd-item" id="sd-t" onclick="irDoMenu('t')">
+      <div class="sd-item-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h1"/></svg></div>
+      <div class="sd-item-lbl">Relatórios</div>
+    </div>
   </div>
 </div>
 
@@ -466,6 +580,583 @@ var SABORES = {
 var PALETA = ["#B85C1A","#6B2F0A","#5B3A8A","#1A4F8A","#1A6B4A","#8A3A1A","#3A6B1A","#6B1A5B"];
 
 // ══════════════════════════════════════════════
+//  DESPESAS GERAIS DO NEGOCIO
+// ══════════════════════════════════════════════
+var DESP_CATEGORIAS=["Equipamento","Insumo (não-receita)","Embalagem em lote","Marketing","Transporte","Taxas/Serviços","Outros"];
+
+function despFiltrarPeriodo(){
+  if(despFiltro==="tudo") return DESPESAS.slice();
+  var mesAtual=hoje().slice(0,7);
+  return DESPESAS.filter(function(d){return d.data.slice(0,7)===mesAtual;});
+}
+
+function pgG(){
+  var lista=despFiltrarPeriodo();
+  lista.sort(function(a,b){return b.data<a.data?-1:(b.data>a.data?1:0);});
+  var total=0;
+  for(var i=0;i<lista.length;i++) total+=(+lista[i].valor||0);
+
+  var h='<div class="card">';
+  h+='<div style="font-size:13px;color:var(--tm);margin-bottom:12px;">Gastos pontuais do negócio que não entram na receita de um brownie específico: equipamento, marketing, transporte, etc.</div>';
+  h+='<button class="btn btn-primary" onclick="mDespesa()">+ Nova Despesa</button>';
+  h+='</div>';
+
+  h+='<div class="scroll-x" style="margin-bottom:14px;">';
+  var filtros=[{k:"mes",l:"Este Mês"},{k:"tudo",l:"Tudo"}];
+  for(var i=0;i<filtros.length;i++){
+    var on=despFiltro===filtros[i].k;
+    h+='<div class="chip'+(on?" on":"")+'" style="flex-shrink:0;" data-f="'+filtros[i].k+'" onclick="setDespFiltro(this.getAttribute(\'data-f\'))">'+filtros[i].l+'</div>';
+  }
+  h+='</div>';
+
+  h+='<div class="stat-grid">';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Total em Despesas</div><div class="stat-card-val">'+BRL(total)+'</div><div class="stat-card-sub">'+lista.length+' lançamento'+(lista.length===1?'':'s')+'</div></div>';
+  h+='</div>';
+
+  if(lista.length===0){
+    h+='<div class="empty"><div class="empty-title">Nenhuma despesa'+(despFiltro==="mes"?" este mês":"")+'</div><div class="empty-sub">Registre compras de equipamento, marketing e outros gastos do negócio.</div></div>';
+    document.getElementById("pgg").innerHTML='<div class="sect">Despesas</div>'+h;
+    return;
+  }
+
+  // agrupar por categoria para visao rapida
+  var porCat={};
+  for(var i=0;i<lista.length;i++){
+    var c=lista[i].categoria||"Outros";
+    porCat[c]=(porCat[c]||0)+(+lista[i].valor||0);
+  }
+  var catArr=Object.keys(porCat).map(function(k){return{k:k,v:porCat[k]};}).sort(function(a,b){return b.v-a.v;});
+  h+='<div class="card" style="margin-bottom:10px;">';
+  h+='<div style="font-size:14px;font-weight:700;color:var(--td);margin-bottom:10px;">Por Categoria</div>';
+  for(var i=0;i<catArr.length;i++){
+    h+='<div class="resumo-line"><span class="lbl2">'+catArr[i].k+'</span><span class="val2">'+BRL(catArr[i].v)+'</span></div>';
+  }
+  h+='</div>';
+
+  for(var i=0;i<lista.length;i++){
+    var d=lista[i];
+    h+='<div class="ing-row">';
+    h+='<div class="ing-row-info">';
+    h+='<div class="ing-row-name">'+d.descricao+'</div>';
+    h+='<div class="ing-row-sub">'+fD(d.data)+' &middot; '+(d.categoria||"Outros")+'</div>';
+    h+='</div>';
+    h+='<div style="text-align:right;display:flex;align-items:center;gap:8px;">';
+    h+='<span style="font-size:14px;font-weight:700;color:var(--td);">'+BRL(d.valor)+'</span>';
+    h+='<button class="btn-sm" style="background:var(--input-bg);color:var(--tl);" data-id="'+d.id+'" onclick="mDespesa(this)">Editar</button>';
+    h+='</div></div>';
+  }
+
+  document.getElementById("pgg").innerHTML='<div class="sect">Despesas</div>'+h;
+}
+
+function setDespFiltro(f){
+  despFiltro=f;
+  pgG();
+}
+
+// ══════════════════════════════════════════════
+//  RELATORIOS
+// ══════════════════════════════════════════════
+var REL_TIPOS=[
+  {k:"vendas",   l:"Vendas",      sub:"O que foi vendido no período"},
+  {k:"financeiro",l:"Financeiro", sub:"Recebido e pendente no período"},
+  {k:"estoque",  l:"Estoque",     sub:"Situação atual dos brownies prontos"},
+  {k:"despesas", l:"Despesas",    sub:"Gastos do negócio no período"}
+];
+var relFiltro={vendas:"mes",financeiro:"mes",estoque:"hoje",despesas:"mes"};
+var relCustom={vendas:{de:"",ate:""},financeiro:{de:"",ate:""},despesas:{de:"",ate:""}};
+
+function relRange(tipo){
+  var hj=hoje();
+  var f=relFiltro[tipo];
+  if(f==="hoje") return {de:hj,ate:hj,lbl:"Hoje"};
+  if(f==="semana") return {de:inicioSemana(),ate:hj,lbl:"Esta Semana"};
+  if(f==="mes") return {de:inicioMes(),ate:hj,lbl:"Este Mês"};
+  if(f==="custom"){
+    var c=relCustom[tipo];
+    return {de:c.de||hj,ate:c.ate||hj,lbl:fD(c.de||hj)+" a "+fD(c.ate||hj)};
+  }
+  return {de:"0000-00-00",ate:"9999-99-99",lbl:"Tudo"};
+}
+
+function setRelFiltro(tipo,f){
+  if(f==="custom"){ abrirRelFiltroCustom(tipo); return; }
+  relFiltro[tipo]=f;
+  pgT();
+}
+function abrirRelFiltroCustom(tipo){
+  var c=relCustom[tipo];
+  var h='<div class="modal-title">Período Personalizado</div>';
+  h+='<div class="fg"><div class="lbl">De</div><input class="inp" type="date" id="rf-de" value="'+(c.de||hoje())+'"></div>';
+  h+='<div class="fg"><div class="lbl">Até</div><input class="inp" type="date" id="rf-ate" value="'+(c.ate||hoje())+'"></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
+  h+='<button class="btn btn-secondary" onclick="fM()">Cancelar</button>';
+  h+='<button class="btn btn-primary" onclick="aplicarRelFiltroCustom(\''+tipo+'\')">Aplicar</button>';
+  h+='</div>';
+  aM(h);
+}
+function aplicarRelFiltroCustom(tipo){
+  var de=(document.getElementById("rf-de")||{}).value||hoje();
+  var ate=(document.getElementById("rf-ate")||{}).value||hoje();
+  if(de>ate){var t=de;de=ate;ate=t;}
+  relCustom[tipo]={de:de,ate:ate};
+  relFiltro[tipo]="custom";
+  fM();
+  pgT();
+}
+
+function pgT(){
+  var h='<div style="font-size:13px;color:var(--tm);margin-bottom:14px;">Gere um relatório em PDF ou envie direto pelo WhatsApp.</div>';
+
+  for(var i=0;i<REL_TIPOS.length;i++){
+    var rt=REL_TIPOS[i];
+    var rng=relRange(rt.k);
+    h+='<div class="card" style="margin-bottom:12px;">';
+    h+='<div style="font-size:15px;font-weight:700;color:var(--td);margin-bottom:2px;">'+rt.l+'</div>';
+    h+='<div style="font-size:12px;color:var(--tm);margin-bottom:10px;">'+rt.sub+'</div>';
+
+    if(rt.k!=="estoque"){
+      h+='<div class="scroll-x" style="margin-bottom:10px;">';
+      var filtros=[{k:"hoje",l:"Hoje"},{k:"semana",l:"Semana"},{k:"mes",l:"Mês"},{k:"tudo",l:"Tudo"},{k:"custom",l:"Escolher"}];
+      for(var j=0;j<filtros.length;j++){
+        var on=relFiltro[rt.k]===filtros[j].k;
+        h+='<div class="chip'+(on?" on":"")+'" style="flex-shrink:0;" data-f="'+filtros[j].k+'" onclick="setRelFiltro(\''+rt.k+'\',this.getAttribute(\'data-f\'))">'+filtros[j].l+'</div>';
+      }
+      h+='</div>';
+      h+='<div style="font-size:11px;font-weight:600;color:var(--tll);margin-bottom:10px;">'+rng.lbl+'</div>';
+    } else {
+      h+='<div style="font-size:11px;font-weight:600;color:var(--tll);margin-bottom:10px;">Posição em '+fD(hoje())+'</div>';
+    }
+
+    h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
+    h+='<button class="btn btn-secondary" onclick="relPDF(\''+rt.k+'\')">📄 Baixar PDF</button>';
+    h+='<button class="btn btn-primary" onclick="relWhatsApp(\''+rt.k+'\')">💬 WhatsApp</button>';
+    h+='</div>';
+    h+='</div>';
+  }
+
+  document.getElementById("pgt").innerHTML='<div class="sect">Relatórios</div>'+h;
+}
+
+// ── Geração de conteúdo (texto comum a PDF e WhatsApp) ──
+function relTitulo(tipo){
+  for(var i=0;i<REL_TIPOS.length;i++) if(REL_TIPOS[i].k===tipo) return REL_TIPOS[i].l;
+  return "Relatório";
+}
+
+function relConteudoVendas(rng){
+  var vs=VND.filter(function(v){return v.data>=rng.de&&v.data<=rng.ate;}).sort(function(a,b){return a.data<b.data?-1:1;});
+  var linhas=[];
+  var total=0, qtd=vs.length;
+  var porDia={};
+  for(var i=0;i<vs.length;i++){
+    if(!porDia[vs[i].data]) porDia[vs[i].data]=[];
+    porDia[vs[i].data].push(vs[i]);
+    total+=vs[i].preco;
+  }
+  var dias=Object.keys(porDia).sort();
+  for(var d=0;d<dias.length;d++){
+    linhas.push({tipo:"dia",txt:fD(dias[d])});
+    var itens=porDia[dias[d]];
+    var totDia=0;
+    for(var i=0;i<itens.length;i++){
+      var v=itens[i];
+      var cli=cB(v.cid);
+      var lb=(v.tipo==="Tradicional"?"Tradicional":v.tipo+" - "+v.sabor)+(cli?" — "+cli.nome:"");
+      linhas.push({tipo:"item",txt:lb,val:v.preco});
+      totDia+=v.preco;
+    }
+    linhas.push({tipo:"subtotal",txt:"Total do dia",val:totDia});
+  }
+  // mix por tipo
+  var mix={};
+  for(var i=0;i<vs.length;i++){ mix[vs[i].tipo]=(mix[vs[i].tipo]||0)+1; }
+  return {linhas:linhas,total:total,qtd:qtd,mix:mix,rng:rng};
+}
+
+function relConteudoFinanceiro(rng){
+  var vs=VND.filter(function(v){return v.data>=rng.de&&v.data<=rng.ate;});
+  var pags=PAG.filter(function(p){return p.data>=rng.de&&p.data<=rng.ate;});
+  var totVendido=0, recebido=0, pendente=0;
+  for(var i=0;i<vs.length;i++){ totVendido+=vs[i].preco; if(vs[i].pago) recebido+=vs[i].preco; else pendente+=vs[i].preco; }
+  for(var i=0;i<pags.length;i++) recebido+=pags[i].valor;
+
+  // pendencias por cliente (considerando o total em aberto de cada cliente, nao so do periodo)
+  var porCliente={};
+  for(var i=0;i<vs.length;i++){
+    if(vs[i].pago) continue;
+    var k=vs[i].cid;
+    porCliente[k]=(porCliente[k]||0)+vs[i].preco;
+  }
+  var clientesArr=Object.keys(porCliente).map(function(k){
+    var c=cB(+k);
+    return {nome:c?c.nome:"Cliente",val:porCliente[k]};
+  }).sort(function(a,b){return b.val-a.val;});
+
+  return {totVendido:totVendido,recebido:recebido,pendente:pendente,clientesArr:clientesArr,rng:rng};
+}
+
+function relConteudoEstoque(){
+  var lista=listaTodosSabores();
+  var porTipo={"Tradicional":[],"Clássico":[],"Premium":[]};
+  var total=0;
+  for(var i=0;i<lista.length;i++){
+    var qtd=estoqueGet(lista[i].tipo,lista[i].sabor);
+    total+=qtd;
+    porTipo[lista[i].tipo].push({sabor:lista[i].sabor,qtd:qtd});
+  }
+  var baixos=[];
+  for(var t in porTipo){
+    for(var i=0;i<porTipo[t].length;i++){
+      if(porTipo[t][i].qtd>0 && porTipo[t][i].qtd<=2) baixos.push({tipo:t,sabor:porTipo[t][i].sabor,qtd:porTipo[t][i].qtd});
+    }
+  }
+  return {porTipo:porTipo,total:total,baixos:baixos};
+}
+
+function relConteudoDespesas(rng){
+  var lista=DESPESAS.filter(function(d){return d.data>=rng.de&&d.data<=rng.ate;}).sort(function(a,b){return a.data<b.data?-1:1;});
+  var total=0, porCat={};
+  for(var i=0;i<lista.length;i++){
+    total+=(+lista[i].valor||0);
+    var c=lista[i].categoria||"Outros";
+    porCat[c]=(porCat[c]||0)+(+lista[i].valor||0);
+  }
+  var catArr=Object.keys(porCat).map(function(k){return{k:k,v:porCat[k]};}).sort(function(a,b){return b.v-a.v;});
+  return {lista:lista,total:total,catArr:catArr,rng:rng};
+}
+
+// ── Texto p/ WhatsApp ──
+function relTextoWhatsApp(tipo){
+  var rng=relRange(tipo);
+  var msg="*BROWNIELÍCIA*\n*Relatório de "+relTitulo(tipo)+"*\n";
+  if(tipo!=="estoque") msg+=rng.lbl+"\n";
+  msg+="━━━━━━━━━━━━━━━━━━━━\n\n";
+
+  if(tipo==="vendas"){
+    var d=relConteudoVendas(rng);
+    if(d.qtd===0){ msg+="Nenhuma venda no período.\n"; }
+    for(var i=0;i<d.linhas.length;i++){
+      var l=d.linhas[i];
+      if(l.tipo==="dia") msg+="📅 *"+l.txt+"*\n";
+      else if(l.tipo==="item") msg+="   • "+l.txt+" — "+BRL(l.val)+"\n";
+      else msg+="   _Subtotal: "+BRL(l.val)+"_\n\n";
+    }
+    msg+="━━━━━━━━━━━━━━━━━━━━\n";
+    msg+="*Total vendido: "+BRL(d.total)+"*\n";
+    msg+="*Brownies: "+d.qtd+"*\n";
+    var mk=Object.keys(d.mix);
+    if(mk.length>0){
+      msg+="\n";
+      for(var i=0;i<mk.length;i++) msg+=mk[i]+": "+d.mix[mk[i]]+"\n";
+    }
+  }
+  else if(tipo==="financeiro"){
+    var d=relConteudoFinanceiro(rng);
+    msg+="Total vendido: "+BRL(d.totVendido)+"\n";
+    msg+="✅ Recebido: "+BRL(d.recebido)+"\n";
+    msg+="⏳ Pendente: "+BRL(d.pendente)+"\n";
+    if(d.clientesArr.length>0){
+      msg+="\n*Pendências por cliente:*\n";
+      for(var i=0;i<d.clientesArr.length;i++) msg+="   • "+d.clientesArr[i].nome+" — "+BRL(d.clientesArr[i].val)+"\n";
+    }
+  }
+  else if(tipo==="estoque"){
+    var d=relConteudoEstoque();
+    var ordem=["Tradicional","Clássico","Premium"];
+    for(var t=0;t<ordem.length;t++){
+      var itens=d.porTipo[ordem[t]];
+      if(itens.length===0) continue;
+      msg+="*"+ordem[t]+"*\n";
+      for(var i=0;i<itens.length;i++){
+        var lb=itens[i].sabor?itens[i].sabor:ordem[t];
+        msg+="   • "+lb+": "+itens[i].qtd+"\n";
+      }
+      msg+="\n";
+    }
+    msg+="━━━━━━━━━━━━━━━━━━━━\n";
+    msg+="*Total em estoque: "+d.total+" brownies*\n";
+    if(d.baixos.length>0){
+      msg+="\n⚠️ *Estoque baixo:*\n";
+      for(var i=0;i<d.baixos.length;i++){
+        var lb=d.baixos[i].sabor?d.baixos[i].sabor:d.baixos[i].tipo;
+        msg+="   • "+lb+" — "+d.baixos[i].qtd+" restante(s)\n";
+      }
+    }
+  }
+  else if(tipo==="despesas"){
+    var d=relConteudoDespesas(rng);
+    if(d.lista.length===0){ msg+="Nenhuma despesa no período.\n"; }
+    for(var i=0;i<d.lista.length;i++){
+      var x=d.lista[i];
+      msg+=fD(x.data)+" — "+x.descricao+" ("+(x.categoria||"Outros")+") — "+BRL(x.valor)+"\n";
+    }
+    if(d.catArr.length>0){
+      msg+="\n*Por categoria:*\n";
+      for(var i=0;i<d.catArr.length;i++) msg+="   • "+d.catArr[i].k+" — "+BRL(d.catArr[i].v)+"\n";
+    }
+    msg+="\n━━━━━━━━━━━━━━━━━━━━\n";
+    msg+="*Total em despesas: "+BRL(d.total)+"*\n";
+  }
+
+  msg+="\n@brownieliciadoces";
+  return msg;
+}
+
+function relWhatsApp(tipo){
+  var msg=relTextoWhatsApp(tipo);
+  copiarTextoSincrono(msg);
+  var url="https://wa.me/?text="+encodeURIComponent(msg);
+  window.open(url,"_blank");
+}
+
+// ── PDF ──
+function relPDF(tipo){
+  if(typeof window.jspdf==="undefined"){
+    alert("Não foi possível carregar o gerador de PDF. Verifique sua conexão com a internet e tente novamente.");
+    return;
+  }
+  var rng=relRange(tipo);
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({unit:"mm",format:"a4"});
+  var margemX=15, y=20, pageW=210, pageH=297;
+  var corMarrom=[62,28,7];
+
+  function checarPagina(alturaNecessaria){
+    if(y+alturaNecessaria>pageH-15){ doc.addPage(); y=20; }
+  }
+  function titulo(txt,tam){
+    checarPagina(10);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(tam||13);
+    doc.setTextColor(corMarrom[0],corMarrom[1],corMarrom[2]);
+    doc.text(txt,margemX,y);
+    y+=tam?tam*0.5+2:8;
+  }
+  function texto(txt,opts){
+    opts=opts||{};
+    checarPagina(7);
+    doc.setFont("helvetica",opts.bold?"bold":"normal");
+    doc.setFontSize(opts.size||10.5);
+    doc.setTextColor(opts.color?opts.color[0]:40,opts.color?opts.color[1]:40,opts.color?opts.color[2]:40);
+    var x=margemX+(opts.indent||0);
+    if(opts.right!==undefined){
+      doc.text(String(opts.right),pageW-margemX,y,{align:"right"});
+    }
+    doc.text(txt,x,y);
+    y+=opts.lh||6;
+  }
+  function linha(){
+    checarPagina(4);
+    doc.setDrawColor(220,210,195);
+    doc.line(margemX,y,pageW-margemX,y);
+    y+=5;
+  }
+
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(18);
+  doc.setTextColor(corMarrom[0],corMarrom[1],corMarrom[2]);
+  doc.text("Brownielícia",margemX,y);
+  y+=8;
+  doc.setFontSize(13);
+  doc.text("Relatório de "+relTitulo(tipo),margemX,y);
+  y+=6;
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(10);
+  doc.setTextColor(120,110,100);
+  var subtit=tipo==="estoque"?("Posição em "+fD(hoje())):rng.lbl;
+  doc.text(subtit,margemX,y);
+  y+=3;
+  linha();
+  y+=2;
+
+  if(tipo==="vendas"){
+    var d=relConteudoVendas(rng);
+    if(d.qtd===0){ texto("Nenhuma venda no período."); }
+    for(var i=0;i<d.linhas.length;i++){
+      var l=d.linhas[i];
+      if(l.tipo==="dia"){ checarPagina(10); y+=1; texto(l.txt,{bold:true,size:11}); }
+      else if(l.tipo==="item") texto(l.txt,{indent:4,right:BRL(l.val)});
+      else { texto(l.txt,{indent:4,size:9.5,color:[140,130,120],right:BRL(l.val)}); y+=2; }
+    }
+    linha();
+    texto("Total vendido",{bold:true,size:12,right:BRL(d.total)});
+    texto("Quantidade de brownies",{right:String(d.qtd)});
+    var mk=Object.keys(d.mix);
+    if(mk.length>0){
+      y+=2;
+      texto("Mix de produtos",{bold:true});
+      for(var i=0;i<mk.length;i++) texto(mk[i],{indent:4,right:String(d.mix[mk[i]])});
+    }
+  }
+  else if(tipo==="financeiro"){
+    var d=relConteudoFinanceiro(rng);
+    texto("Total vendido",{right:BRL(d.totVendido)});
+    texto("Recebido",{bold:true,color:[30,110,70],right:BRL(d.recebido)});
+    texto("Pendente",{bold:true,color:[160,110,20],right:BRL(d.pendente)});
+    if(d.clientesArr.length>0){
+      y+=3; linha();
+      texto("Pendências por cliente",{bold:true});
+      for(var i=0;i<d.clientesArr.length;i++) texto(d.clientesArr[i].nome,{indent:4,right:BRL(d.clientesArr[i].val)});
+    }
+  }
+  else if(tipo==="estoque"){
+    var d=relConteudoEstoque();
+    var ordem=["Tradicional","Clássico","Premium"];
+    for(var t=0;t<ordem.length;t++){
+      var itens=d.porTipo[ordem[t]];
+      if(itens.length===0) continue;
+      y+=1;
+      texto(ordem[t],{bold:true,size:11});
+      for(var i=0;i<itens.length;i++){
+        var lb=itens[i].sabor?itens[i].sabor:ordem[t];
+        texto(lb,{indent:4,right:String(itens[i].qtd)});
+      }
+    }
+    linha();
+    texto("Total em estoque",{bold:true,size:12,right:d.total+" brownies"});
+    if(d.baixos.length>0){
+      y+=3;
+      texto("Estoque baixo",{bold:true,color:[180,120,20]});
+      for(var i=0;i<d.baixos.length;i++){
+        var lbBaixo=d.baixos[i].sabor?d.baixos[i].sabor:d.baixos[i].tipo;
+        texto(lbBaixo,{indent:4,color:[180,120,20],right:d.baixos[i].qtd+" restante(s)"});
+      }
+    }
+  }
+  else if(tipo==="despesas"){
+    var d=relConteudoDespesas(rng);
+    if(d.lista.length===0){ texto("Nenhuma despesa no período."); }
+    for(var i=0;i<d.lista.length;i++){
+      var x=d.lista[i];
+      texto(fD(x.data)+" — "+x.descricao,{size:9.5,right:BRL(x.valor)});
+      texto(x.categoria||"Outros",{indent:4,size:8.5,color:[140,130,120],lh:6});
+    }
+    if(d.catArr.length>0){
+      y+=2; linha();
+      texto("Por categoria",{bold:true});
+      for(var i=0;i<d.catArr.length;i++) texto(d.catArr[i].k,{indent:4,right:BRL(d.catArr[i].v)});
+    }
+    linha();
+    texto("Total em despesas",{bold:true,size:12,right:BRL(d.total)});
+  }
+
+  y+=6;
+  doc.setFont("helvetica","italic");
+  doc.setFontSize(9);
+  doc.setTextColor(150,140,130);
+  checarPagina(8);
+  doc.text("@brownieliciadoces  ·  Gerado em "+fD(hoje()),margemX,y);
+
+  var nomeArquivo="brownielicia_"+tipo+"_"+hoje()+".pdf";
+
+  // No Safari em modo PWA "standalone" (instalado na tela de início),
+  // doc.save() tenta simular um clique num link de download, e isso
+  // costuma falhar silenciosamente (não existe "onde" o arquivo cair).
+  // Por isso, sempre que o navegador permitir, usamos o compartilhamento
+  // nativo (Share Sheet do iOS/Android) com o PDF como arquivo — o mesmo
+  // mecanismo já usado para enviar o extrato com logo. Isso deixa a
+  // própria pessoa escolher "Salvar em Arquivos", enviar por WhatsApp, etc.
+  var blob=doc.output("blob");
+  if(navigator.share && navigator.canShare){
+    try{
+      var file=new File([blob],nomeArquivo,{type:"application/pdf"});
+      if(navigator.canShare({files:[file]})){
+        navigator.share({files:[file],title:"Brownielícia — "+relTitulo(tipo)}).catch(function(err){
+          if(err && err.name!=="AbortError") doc.save(nomeArquivo);
+        });
+        return;
+      }
+    }catch(e){ /* cai no fallback abaixo */ }
+  }
+  doc.save(nomeArquivo);
+}
+
+function mDespesa(el){
+  var editId=el?el.getAttribute("data-id"):null;
+  var d=editId?DESPESAS.find(function(x){return x.id==editId;}):null;
+  var h='<div class="modal-title">'+(d?"Editar":"Nova")+' Despesa</div>';
+  h+='<div class="fg"><div class="lbl">Descrição</div><input class="inp" id="gd-desc" placeholder="Ex: Forno novo, cartão de visita..." value="'+(d?d.descricao:"")+'"></div>';
+  h+='<div class="fg"><div class="lbl">Categoria</div><select class="inp" id="gd-cat">';
+  for(var i=0;i<DESP_CATEGORIAS.length;i++){
+    h+='<option value="'+DESP_CATEGORIAS[i]+'"'+(d&&d.categoria===DESP_CATEGORIAS[i]?" selected":"")+'>'+DESP_CATEGORIAS[i]+'</option>';
+  }
+  h+='</select></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
+  h+='<div class="fg"><div class="lbl">Valor (R$)</div><input class="inp" type="number" id="gd-valor" min="0" step="0.01" value="'+(d?d.valor:"")+'"></div>';
+  h+='<div class="fg"><div class="lbl">Data</div><input class="inp" type="date" id="gd-data" value="'+(d?d.data:hoje())+'"></div>';
+  h+='</div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">';
+  h+='<button class="btn btn-secondary" onclick="fM()">Cancelar</button>';
+  h+='<button class="btn btn-primary" onclick="sDespesa(\''+(editId||"")+'\')">Salvar</button>';
+  h+='</div>';
+  if(d){
+    h+='<button class="btn btn-secondary" style="margin-top:8px;color:var(--red);" onclick="delDespesa(\''+editId+'\')">Excluir Despesa</button>';
+  }
+  aM(h);
+}
+
+function sDespesa(editId){
+  var descricao=document.getElementById("gd-desc").value.trim();
+  var categoria=document.getElementById("gd-cat").value;
+  var valor=parseFloat(document.getElementById("gd-valor").value);
+  var data=document.getElementById("gd-data").value;
+
+  if(!descricao||isNaN(valor)||valor<=0||!data){
+    alert("Preencha descrição, valor e data corretamente.");
+    return;
+  }
+
+  if(editId){
+    var d=DESPESAS.find(function(x){return x.id==editId;});
+    if(d){ d.descricao=descricao; d.categoria=categoria; d.valor=valor; d.data=data; }
+  } else {
+    DESPESAS.push({id:Date.now(), descricao:descricao, categoria:categoria, valor:valor, data:data});
+  }
+  salvarDespesas();
+  fM();
+  pgG();
+}
+
+function delDespesa(id){
+  confirmar("Excluir esta despesa?", function(){
+    DESPESAS=DESPESAS.filter(function(d){return d.id!=id;});
+    salvarDespesas();
+    fM();
+    pgG();
+  });
+}
+
+// ══════════════════════════════════════════════
+//  PRECIFICACAO
+// ══════════════════════════════════════════════
+// PREC_ING: [{id, nome, qtd, unidade, valor}] - ingredientes base cadastrados
+var PREC_ING = [];
+// PREC_RECEITAS: { "massa": {itens:[{ingId,qtdUsada,unidade}], producao:12}, "Brigadeiro": {itens:[...]}, ... }
+// chave "massa" = receita da massa base; demais chaves = nome do sabor de recheio
+var PREC_RECEITAS = { massa: { itens: [], producao: 12 } };
+// PREC_EXTRAS: custos extras por brownie + config de produto + preco de venda, por tipo de produto (Tradicional/Clássico/Premium)
+var PREC_EXTRAS = {
+  embalagem: 0.50, adesivo: 0.10, etiqueta: 0.05, sacola: 0.20, entrega: 0, outros: 0
+};
+var PREC_PERDA = 0; // percentual de perda/desperdicio na producao (ex: 5 = 5%)
+var PREC_PRODUTO = { tamanho:"6x6 cm", pesoFinal:60, qtdRecheio:40 };
+var PREC_PRECOS = {}; // {Tradicional:8, "Clássico":9, Premium:10} preco de venda definido pela usuaria
+var PREC_FIXOS = { aluguel:0, gas:0, luz:0, internet:0, taxas:0, outros:0 }; // custos fixos mensais do negocio
+var precSub = "ing";       // sub-aba ativa: ing | massa | recheio | extras | resultado
+var precSaborAtual = "";   // sabor de recheio selecionado na sub-aba recheio
+var precTipoResultado = "Clássico"; // tipo de produto selecionado na aba resultado
+var precHistorico = [];    // historico de calculos salvos
+// PREC_HIST_ING: snapshots de preco por ingrediente ao longo do tempo
+// [{ingId, data:"AAAA-MM-DD", nome, qtd, unidade, valor}]
+// gravado automaticamente sempre que um ingrediente e criado ou editado
+var PREC_HIST_ING = [];
+var evolEscopo = "";    // "massa" | nome do sabor selecionado na aba Evolucao de Custos
+var DESPESAS = []; // despesas gerais do negocio: {id, data, descricao, categoria, valor}
+var despFiltro = "mes"; // filtro de periodo na tela de despesas: mes | tudo
+
+
+// ══════════════════════════════════════════════
 //  ESTOQUE
 // ══════════════════════════════════════════════
 // Cada item: {key:"Tipo|Sabor", qtd:numero}
@@ -569,11 +1260,35 @@ function ir(p){
   for(var i=0;i<tis.length;i++) tis[i].classList.remove("on");
   var pg=document.getElementById("pg"+p);
   if(pg) pg.classList.add("on");
-  var tabs={d:0,c:1,r:2,a:3,e:4};
-  if(tabs.hasOwnProperty(p) && tis[tabs[p]]) tis[tabs[p]].classList.add("on");
+  var tabBtn=document.getElementById("tb-"+p);
+  if(tabBtn) tabBtn.classList.add("on");
+  // se a pagina ativa veio do menu "Mais" (estoque/precos), deixa o botao "Mais" marcado tambem
+  var maisItem=document.getElementById("sd-"+p);
+  var tbMais=document.getElementById("tb-mais");
+  if(maisItem && tbMais) tbMais.classList.add("on");
+  // marca item correspondente dentro do menu lateral, se existir
+  var sdItens=document.querySelectorAll(".sd-item");
+  for(var i=0;i<sdItens.length;i++) sdItens[i].classList.remove("on");
+  if(maisItem) maisItem.classList.add("on");
   var m=document.getElementById("main");
   if(m) m.scrollTop=0;
   render();
+}
+
+// ══════════════════════════════════════════════
+//  MENU "MAIS" (SIDE DRAWER)
+// ══════════════════════════════════════════════
+function abrirMais(){
+  document.getElementById("sd-ov").classList.add("on");
+  document.getElementById("sd").classList.add("on");
+}
+function fecharMais(){
+  document.getElementById("sd-ov").classList.remove("on");
+  document.getElementById("sd").classList.remove("on");
+}
+function irDoMenu(p){
+  fecharMais();
+  ir(p);
 }
 
 // ══════════════════════════════════════════════
@@ -723,11 +1438,11 @@ function pgD(){
     h+='<div class="day-card">';
     h+='<div class="day-card-hd'+(isA?" active":"")+'" data-d="'+data+'" onclick="var d=this.getAttribute(\'data-d\');diaA=diaA===d?null:d;pgD();">';
     h+='<div>';
-    h+='<div style="font-size:15px;font-weight:700;color:'+(isA?"#F4ECD8":"#1A0C04")+';">'+fD(data)+'</div>';
-    h+='<div style="font-size:12px;color:'+(isA?"rgba(244,236,216,.6)":"#5A3A1A")+';margin-top:2px;">'+itens.length+' brownie'+(itens.length>1?"s":"")+(nomes?" — "+nomes:"")+'</div>';
+    h+='<div style="font-size:15px;font-weight:700;color:'+(isA?"#F4ECD8":"var(--td)")+';">'+fD(data)+'</div>';
+    h+='<div style="font-size:12px;color:'+(isA?"rgba(244,236,216,.6)":"var(--tm)")+';margin-top:2px;">'+itens.length+' brownie'+(itens.length>1?"s":"")+(nomes?" — "+nomes:"")+'</div>';
     h+='</div>';
     h+='<div style="text-align:right;">';
-    h+='<div style="font-size:16px;font-weight:800;color:'+(isA?"#F4ECD8":"#1A0C04")+';">'+BRL(tot)+'</div>';
+    h+='<div style="font-size:16px;font-weight:800;color:'+(isA?"#F4ECD8":"var(--td)")+';">'+BRL(tot)+'</div>';
     if(pen>0) h+='<span class="badge badge-pend" style="margin-top:3px;">'+BRL(pen)+'</span>';
     else h+='<span class="badge badge-pago" style="margin-top:3px;">Pago</span>';
     h+='</div></div>';
@@ -749,7 +1464,6 @@ function pgD(){
         h+='<span style="font-size:14px;font-weight:700;color:#1A0C04;">'+cN(+cid)+'</span>';
         h+='</div>';
         h+='<button class="btn-sm btn-sm-pay" data-cid="'+cid+'" data-d="'+data+'" onclick="event.stopPropagation();pagarTodosEl(this)">Pagar todos</button>';
-          +'Pagar todos</button>';
         h+='</div>';
         for(var i=0;i<ls.length;i++){
           var v=ls[i];
@@ -795,18 +1509,18 @@ function pgC(){
     h+='<div style="display:flex;align-items:center;gap:12px;">';
     h+='<div class="av" style="width:44px;height:44px;font-size:18px;background:'+c.cor+';flex-shrink:0;">'+c.nome[0]+'</div>';
     h+='<div style="flex:1;min-width:0;">';
-    h+='<div style="font-size:16px;font-weight:700;color:#1A0C04;">'+c.nome+'</div>';
-    h+='<div style="font-size:12px;color:#5A3A1A;">'+(c.tel||"Sem telefone")+'</div>';
+    h+='<div style="font-size:16px;font-weight:700;color:var(--td);">'+c.nome+'</div>';
+    h+='<div style="font-size:12px;color:var(--tm);">'+(c.tel||"Sem telefone")+'</div>';
     h+='</div>';
     h+='<div style="text-align:right;flex-shrink:0;">';
     if(dev>0){
-      h+='<div style="font-size:16px;font-weight:800;color:#7A4A00;">'+BRL(dev)+'</div>';
+      h+='<div style="font-size:16px;font-weight:800;color:var(--amb);">'+BRL(dev)+'</div>';
       h+='<span class="badge badge-pend">Em aberto</span>';
     } else if(cred>0){
-      h+='<div style="font-size:16px;font-weight:800;color:#1A5C2E;">'+BRL(cred)+'</div>';
+      h+='<div style="font-size:16px;font-weight:800;color:var(--grn);">'+BRL(cred)+'</div>';
       h+='<span class="badge badge-pago">Credito</span>';
     } else {
-      h+='<div style="font-size:16px;font-weight:800;color:#1A5C2E;">'+BRL(tot)+'</div>';
+      h+='<div style="font-size:16px;font-weight:800;color:var(--grn);">'+BRL(tot)+'</div>';
       h+='<span class="badge badge-pago">Em dia</span>';
     }
     h+='</div></div>';
@@ -816,12 +1530,12 @@ function pgC(){
       // Resumo financeiro
       h+='<div style="background:#E4D8C0;border-radius:10px;padding:12px;margin-bottom:12px;">';
       h+='<div style="display:flex;justify-content:space-between;margin-bottom:6px;">';
-      h+='<span style="font-size:12px;font-weight:600;color:#4A2A0A;">Total comprado</span>';
+      h+='<span style="font-size:12px;font-weight:600;color:#5A3A1A;">Total comprado</span>';
       h+='<span style="font-size:14px;font-weight:800;color:#1A0C04;">'+BRL(tot)+'</span>';
       h+='</div>';
       var pago=totalPagoCli(c.id);
       h+='<div style="display:flex;justify-content:space-between;margin-bottom:'+(dev>0||cred>0?"6":"0")+'px;">';
-      h+='<span style="font-size:12px;font-weight:600;color:#4A2A0A;">Total pago</span>';
+      h+='<span style="font-size:12px;font-weight:600;color:#5A3A1A;">Total pago</span>';
       h+='<span style="font-size:14px;font-weight:700;color:#1A5C2E;">'+BRL(pago)+'</span>';
       h+='</div>';
       if(dev>0){
@@ -858,7 +1572,7 @@ function pgC(){
       var meses=Object.keys(mesMap).sort().reverse();
       for(var mi=0;mi<meses.length;mi++){
         var ms=meses[mi], ym=ms.split("-");
-        h+='<div style="font-size:10px;font-weight:700;color:#5A3A1A;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">'+MESES[+ym[1]-1]+' '+ym[0]+'</div>';
+        h+='<div style="font-size:10px;font-weight:700;color:var(--modal-text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">'+MESES[+ym[1]-1]+' '+ym[0]+'</div>';
         var vm=mesMap[ms];
         for(var vi=0;vi<vm.length;vi++){
           var v=vm[vi];
@@ -866,15 +1580,15 @@ function pgC(){
           h+='<div class="item-row" style="border-bottom:1px solid rgba(90,58,26,.08);">';
           h+='<div class="item-row-top">';
           h+='<div>';
-          h+='<div style="font-size:13px;font-weight:500;color:#1A0C04;">'+fD(v.data)+'  '+lb+'</div>';
-          if(v.obs) h+='<div style="font-size:11px;color:#7A5030;font-style:italic;margin-top:2px;">'+v.obs+'</div>';
+          h+='<div style="font-size:13px;font-weight:500;color:var(--td);">'+fD(v.data)+'  '+lb+'</div>';
+          if(v.obs) h+='<div style="font-size:11px;color:var(--tm);font-style:italic;margin-top:2px;">'+v.obs+'</div>';
           h+='</div>';
-          h+='<span style="font-size:14px;font-weight:700;color:#1A0C04;flex-shrink:0;">'+BRL(v.preco)+'</span>';
+          h+='<span style="font-size:14px;font-weight:700;color:var(--td);flex-shrink:0;">'+BRL(v.preco)+'</span>';
           h+='</div>';
           h+='<div class="item-row-actions">';
           if(v.pago) h+='<button class="btn-sm badge-pago-btn" onclick="event.stopPropagation();confirmarDespagar('+v.id+')">✓ Pago</button>';
           else h+='<button class="btn-sm btn-sm-pay" onclick="event.stopPropagation();pagar('+v.id+')">Pagar</button>';
-          h+='<button class="btn-sm" style="background:rgba(90,58,26,.1);color:#5A3A1A;" data-vid="'+v.id+'" onclick="event.stopPropagation();mEV(this)">Editar</button>';
+          h+='<button class="btn-sm" style="background:var(--modal-overlay);color:var(--modal-text);" data-vid="'+v.id+'" onclick="event.stopPropagation();mEV(this)">Editar</button>';
           h+='</div></div>';
         }
         h+='<div style="height:10px;"></div>';
@@ -934,6 +1648,51 @@ function aplicarFiltroCustom(){
   fM();
   pgR();
 }
+// retorna {de,ate} do mes anterior, limitando ao mesmo dia do mes atual
+// (compara "1 a 27 de julho" com "1 a 27 de junho", nao o mes inteiro, para ser justo)
+function rangeMesAnterior(){
+  var d=new Date();
+  var diaAtual=d.getDate();
+  var mesAnt=new Date(d.getFullYear(),d.getMonth()-1,1);
+  var ultimoDiaMesAnt=new Date(mesAnt.getFullYear(),mesAnt.getMonth()+1,0).getDate();
+  var diaFinal=Math.min(diaAtual,ultimoDiaMesAnt);
+  var de=mesAnt.getFullYear()+"-"+pad(mesAnt.getMonth()+1)+"-01";
+  var ate=mesAnt.getFullYear()+"-"+pad(mesAnt.getMonth()+1)+"-"+pad(diaFinal);
+  return {de:de,ate:ate};
+}
+
+function resumoComparacaoMes(totAtual,qtdAtual){
+  var rngAnt=rangeMesAnterior();
+  var vndAnt=VND.filter(function(v){return v.data>=rngAnt.de&&v.data<=rngAnt.ate;});
+  var totAnt=0;
+  for(var i=0;i<vndAnt.length;i++) totAnt+=vndAnt[i].preco;
+  var qtdAnt=vndAnt.length;
+
+  var d=new Date();
+  var mesAntNome=MESES[(d.getMonth()-1+12)%12];
+
+  if(totAnt===0 && qtdAnt===0){
+    return '';
+  }
+
+  var varTot=totAnt>0?((totAtual-totAnt)/totAnt*100):(totAtual>0?100:0);
+  var varQtd=qtdAnt>0?((qtdAtual-qtdAnt)/qtdAnt*100):(qtdAtual>0?100:0);
+  var subiu=totAtual>=totAnt;
+  var corClass=subiu?"":" neg";
+  var seta=subiu?"▲":"▼";
+
+  var h='<div class="card" style="margin-bottom:10px;">';
+  h+='<div style="font-size:14px;font-weight:700;color:var(--td);margin-bottom:4px;">Comparado a '+mesAntNome+'</div>';
+  h+='<div style="font-size:11px;color:var(--tm);margin-bottom:12px;">Mesmo período do mês anterior (dia 1 ao dia '+(+rngAnt.ate.slice(-2))+')</div>';
+  h+='<div class="lucro-grid">';
+  h+='<div class="lucro-card'+corClass+'"><div class="lbl">Faturamento</div><div class="val">'+seta+' '+Math.abs(varTot).toFixed(0)+'%</div></div>';
+  h+='<div class="lucro-card'+corClass+'"><div class="lbl">Brownies Vendidos</div><div class="val">'+seta+' '+Math.abs(varQtd).toFixed(0)+'%</div></div>';
+  h+='</div>';
+  h+='<div class="resumo-line" style="margin-top:8px;"><span class="lbl2">'+mesAntNome+' (mesmo período)</span><span class="val2">'+BRL(totAnt)+' &middot; '+qtdAnt+' brownies</span></div>';
+  h+='</div>';
+  return h;
+}
+
 function rangeFiltro(){
   var hj=hoje();
   if(filtroR==="hoje") return {de:hj,ate:hj,lbl:"Hoje"};
@@ -973,6 +1732,10 @@ function pgR(){
   h+='<div class="stat-card"><div class="stat-card-lbl">Clientes</div><div class="stat-card-val">'+Object.keys(clientesNoPeriodo).length+'</div></div>';
   h+='</div>';
 
+  if(filtroR==="mes"){
+    h+=resumoComparacaoMes(tot,vndF.length);
+  }
+
   // Mix de produtos
   var tr=0,cl=0,pr=0;
   for(var i=0;i<vndF.length;i++){
@@ -982,14 +1745,14 @@ function pgR(){
   }
   var tot2=vndF.length||1;
   h+='<div class="card" style="margin-bottom:10px;">';
-  h+='<div style="font-size:14px;font-weight:700;color:#1A0C04;margin-bottom:12px;">Mix de Produtos</div>';
-  var mix=[{l:"Tradicional — R$ 6,00",v:tr,c:"#8B6340"},{l:"Clássico — R$ 7,00",v:cl,c:"var(--gold)"},{l:"Premium — R$ 8,00",v:pr,c:"#6B3A1F"}];
+  h+='<div style="font-size:14px;font-weight:700;color:var(--td);margin-bottom:12px;">Mix de Produtos</div>';
+  var mix=[{l:"Tradicional — R$ 6,00",v:tr,c:"var(--prod1)"},{l:"Clássico — R$ 7,00",v:cl,c:"var(--gold)"},{l:"Premium — R$ 8,00",v:pr,c:"var(--prod3)"}];
   for(var i=0;i<mix.length;i++){
     if(mix[i].v===0) continue;
     h+='<div style="margin-bottom:10px;">';
     h+='<div style="display:flex;justify-content:space-between;margin-bottom:4px;">';
-    h+='<span style="font-size:13px;font-weight:500;color:#3D1F0A;">'+mix[i].l+'</span>';
-    h+='<span style="font-size:13px;font-weight:700;color:#1A0C04;">'+mix[i].v+' ('+Math.round(mix[i].v/tot2*100)+'%)</span>';
+    h+='<span style="font-size:13px;font-weight:500;color:var(--ts);">'+mix[i].l+'</span>';
+    h+='<span style="font-size:13px;font-weight:700;color:var(--td);">'+mix[i].v+' ('+Math.round(mix[i].v/tot2*100)+'%)</span>';
     h+='</div>';
     h+='<div class="pbar"><div class="pbar-fill" style="width:'+Math.round(mix[i].v/tot2*100)+'%;background:'+mix[i].c+';"></div></div>';
     h+='</div>';
@@ -1006,14 +1769,14 @@ function pgR(){
   var arr=Object.keys(sab).map(function(k){return{k:k,n:sab[k].n,r:sab[k].r};});
   arr.sort(function(a,b){return b.n-a.n;});
   h+='<div class="card" style="margin-bottom:10px;">';
-  h+='<div style="font-size:14px;font-weight:700;color:#1A0C04;margin-bottom:12px;">Ranking de Sabores</div>';
+  h+='<div style="font-size:14px;font-weight:700;color:var(--td);margin-bottom:12px;">Ranking de Sabores</div>';
   for(var i=0;i<Math.min(5,arr.length);i++){
     h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">';
     h+='<div style="width:24px;height:24px;border-radius:50%;background:#3D1F0A;color:#F4ECD8;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+(i+1)+'</div>';
     h+='<div style="flex:1;">';
     h+='<div style="display:flex;justify-content:space-between;margin-bottom:3px;">';
-    h+='<span style="font-size:13px;font-weight:600;color:#1A0C04;">'+arr[i].k+'</span>';
-    h+='<span style="font-size:12px;font-weight:700;color:#3D1F0A;">'+arr[i].n+'x — '+BRL(arr[i].r)+'</span>';
+    h+='<span style="font-size:13px;font-weight:600;color:var(--td);">'+arr[i].k+'</span>';
+    h+='<span style="font-size:12px;font-weight:700;color:var(--ts);">'+arr[i].n+'x — '+BRL(arr[i].r)+'</span>';
     h+='</div>';
     h+='<div class="pbar"><div class="pbar-fill" style="width:'+Math.round(arr[i].n/arr[0].n*100)+'%;"></div></div>';
     h+='</div></div>';
@@ -1022,7 +1785,7 @@ function pgR(){
 
   // Top clientes
   h+='<div class="card" style="margin-bottom:10px;">';
-  h+='<div style="font-size:14px;font-weight:700;color:#1A0C04;margin-bottom:12px;">Top Clientes</div>';
+  h+='<div style="font-size:14px;font-weight:700;color:var(--td);margin-bottom:12px;">Top Clientes</div>';
   var cliArr=CLI.map(function(c){
     var vs=vndF.filter(function(v){return v.cid===c.id;});
     return{c:c,tot:vs.reduce(function(s,v){return s+v.preco;},0),n:vs.length};
@@ -1033,8 +1796,8 @@ function pgR(){
     h+='<div class="av" style="width:32px;height:32px;font-size:14px;background:'+cliArr[i].c.cor+';font-weight:700;flex-shrink:0;">'+cliArr[i].c.nome[0]+'</div>';
     h+='<div style="flex:1;">';
     h+='<div style="display:flex;justify-content:space-between;margin-bottom:3px;">';
-    h+='<span style="font-size:13px;font-weight:600;color:#1A0C04;">'+cliArr[i].c.nome+'</span>';
-    h+='<span style="font-size:12px;font-weight:700;color:#3D1F0A;">'+BRL(cliArr[i].tot)+'</span>';
+    h+='<span style="font-size:13px;font-weight:600;color:var(--td);">'+cliArr[i].c.nome+'</span>';
+    h+='<span style="font-size:12px;font-weight:700;color:var(--ts);">'+BRL(cliArr[i].tot)+'</span>';
     h+='</div>';
     h+='<div class="pbar"><div class="pbar-fill" style="width:'+Math.round(cliArr[i].tot/ms2*100)+'%;"></div></div>';
     h+='</div></div>';
@@ -1283,6 +2046,941 @@ function sEstoqueLote(){
   salvarEstoque();
   fM();
   pgE();
+}
+
+// ══════════════════════════════════════════════
+//  PRECIFICACAO
+// ══════════════════════════════════════════════
+function precUnidLabel(u){
+  var m={un:"un",g:"g",kg:"kg",ml:"ml",l:"L"};
+  return m[u]||u;
+}
+
+function precCustoUnitarioIng(ing){
+  if(!ing||!ing.qtd) return 0;
+  return ing.valor/ing.qtd;
+}
+
+function precIngById(id){
+  return PREC_ING.find(function(i){return i.id==id;});
+}
+
+// Custo de um item de receita (ingrediente + quantidade usada)
+function precCustoItem(item){
+  var ing=precIngById(item.ingId);
+  if(!ing) return 0;
+  return item.qtdUsada*precCustoUnitarioIng(ing);
+}
+
+// Custo total de uma receita (massa ou recheio) pela chave em PREC_RECEITAS
+function precCustoReceitaTotal(chave){
+  var r=PREC_RECEITAS[chave];
+  if(!r) return 0;
+  var total=0;
+  for(var i=0;i<r.itens.length;i++) total+=precCustoItem(r.itens[i]);
+  return total;
+}
+
+function precCustoMassaPorBrownie(){
+  var total=precCustoReceitaTotal("massa");
+  var producao=PREC_RECEITAS.massa.producao||1;
+  return total/producao;
+}
+
+// recheio eh custo TOTAL do lote dividido pela producao daquele recheio (cada recheio pode ter sua propria producao,
+// mas para simplificar usamos a mesma logica: custo total / qtd de brownies que aquele lote de recheio rende)
+function precCustoRecheioPorBrownie(sabor){
+  if(!sabor||!PREC_RECEITAS[sabor]) return 0;
+  var total=precCustoReceitaTotal(sabor);
+  var producao=PREC_RECEITAS[sabor].producao||1;
+  return total/producao;
+}
+
+function precCustoExtrasPorBrownie(){
+  var e=PREC_EXTRAS;
+  return (+e.embalagem||0)+(+e.adesivo||0)+(+e.etiqueta||0)+(+e.sacola||0)+(+e.entrega||0)+(+e.outros||0);
+}
+
+function precCustoFixoTotalMes(){
+  var f=PREC_FIXOS;
+  return (+f.aluguel||0)+(+f.gas||0)+(+f.luz||0)+(+f.internet||0)+(+f.taxas||0)+(+f.outros||0);
+}
+
+// quantidade de brownies efetivamente vendidos no mes corrente (usa o mes do dispositivo)
+function precQtdVendidaMesAtual(){
+  var hj=hoje();
+  var mesAtual=hj.slice(0,7); // "AAAA-MM"
+  return VND.filter(function(v){return v.data.slice(0,7)===mesAtual;}).length;
+}
+
+// custo fixo mensal dividido pela producao real do mes; se nao houve venda ainda,
+// usa a producao cadastrada da massa como estimativa para nao dividir por zero
+function precCustoFixoPorBrownie(){
+  var qtd=precQtdVendidaMesAtual();
+  if(qtd===0) qtd=PREC_RECEITAS.massa.producao||1;
+  return precCustoFixoTotalMes()/qtd;
+}
+
+// fator multiplicador para compensar perda/desperdicio na producao.
+// Ex: 5% de perda -> fator 1.0526 (precisa produzir ~5.3% mais para entregar a quantidade desejada)
+function precFatorPerda(){
+  var p=(+PREC_PERDA||0)/100;
+  if(p<=0) return 1;
+  if(p>=0.95) p=0.95; // limite de seguranca para nao dividir por numero perto de zero
+  return 1/(1-p);
+}
+
+function precCustoMassaPorBrownieComPerda(){
+  return precCustoMassaPorBrownie()*precFatorPerda();
+}
+function precCustoRecheioPorBrownieComPerda(sabor){
+  return precCustoRecheioPorBrownie(sabor)*precFatorPerda();
+}
+
+function precCustoFinalPorBrownie(sabor){
+  return precCustoMassaPorBrownieComPerda()+precCustoRecheioPorBrownieComPerda(sabor)+precCustoExtrasPorBrownie()+precCustoFixoPorBrownie();
+}
+
+function precListaSabores(){
+  // junta sabores dos dois grupos (Classico + Premium) que ja existem no app de vendas
+  var lista=[];
+  for(var k in SABORES){
+    for(var i=0;i<SABORES[k].length;i++){
+      if(lista.indexOf(SABORES[k][i])===-1) lista.push(SABORES[k][i]);
+    }
+  }
+  return lista;
+}
+
+// custo real de UM brownie vendido, dado seu tipo e sabor (usa preco de venda real registrado na venda)
+function precCustoRealVenda(tipo, sabor){
+  var custMassa=precCustoMassaPorBrownieComPerda();
+  var custRecheio=tipo==="Tradicional"?0:precCustoRecheioPorBrownieComPerda(sabor);
+  var custExtras=precCustoExtrasPorBrownie();
+  var custFixo=precCustoFixoPorBrownie();
+  return custMassa+custRecheio+custExtras+custFixo;
+}
+
+// cruza as vendas reais do mes (VND) com os custos calculados, por tipo/sabor
+// retorna: {faturamento, custoTotal, lucroTotal, qtd, porSabor:[{sabor,tipo,qtd,faturamento,custoUnit,custoTotal,lucroUnit,lucroTotal}]}
+function precLucroRealMes(){
+  var hj=hoje();
+  var mesAtual=hj.slice(0,7);
+  var vndMes=VND.filter(function(v){return v.data.slice(0,7)===mesAtual;});
+
+  var grupos={}; // chave "Tipo|Sabor" -> {tipo,sabor,qtd,faturamento}
+  for(var i=0;i<vndMes.length;i++){
+    var v=vndMes[i];
+    var key=v.tipo+"|"+(v.sabor||"");
+    if(!grupos[key]) grupos[key]={tipo:v.tipo,sabor:v.sabor||"",qtd:0,faturamento:0};
+    grupos[key].qtd++;
+    grupos[key].faturamento+=v.preco;
+  }
+
+  var porSabor=[];
+  var faturamentoTotal=0, custoTotal=0;
+  for(var key in grupos){
+    var g=grupos[key];
+    var custoUnit=precCustoRealVenda(g.tipo,g.sabor);
+    var custoGrupo=custoUnit*g.qtd;
+    var lucroGrupo=g.faturamento-custoGrupo;
+    porSabor.push({
+      tipo:g.tipo, sabor:g.sabor, qtd:g.qtd, faturamento:g.faturamento,
+      custoUnit:custoUnit, custoTotal:custoGrupo, lucroUnit:g.faturamento/g.qtd-custoUnit, lucroTotal:lucroGrupo
+    });
+    faturamentoTotal+=g.faturamento;
+    custoTotal+=custoGrupo;
+  }
+  porSabor.sort(function(a,b){return b.lucroTotal-a.lucroTotal;});
+
+  return {
+    faturamento:faturamentoTotal, custoTotal:custoTotal, lucroTotal:faturamentoTotal-custoTotal,
+    qtd:vndMes.length, porSabor:porSabor, custoFixoMes:precCustoFixoTotalMes()
+  };
+}
+
+function BRLp(v){
+  if(isNaN(v)) v=0;
+  return "R$ "+v.toFixed(2).replace(".",",");
+}
+
+// ══════════════════════════════════════════════
+//  EVOLUCAO DE CUSTOS (historico de precos de ingredientes)
+// ══════════════════════════════════════════════
+
+// custo unitario de UM ingrediente, na data informada (usa o snapshot mais
+// recente cuja data seja <= dataISO; se nao houver nenhum snapshot anterior,
+// usa o primeiro snapshot existente; se nao houver nenhum, usa o valor atual)
+function precCustoUnitarioIngNaData(ingId,dataISO){
+  var snaps=PREC_HIST_ING.filter(function(s){return s.ingId==ingId;}).sort(function(a,b){return a.data<b.data?-1:1;});
+  if(snaps.length===0){
+    var ing=precIngById(ingId);
+    return ing?precCustoUnitarioIng(ing):0;
+  }
+  var valido=null;
+  for(var i=0;i<snaps.length;i++){
+    if(snaps[i].data<=dataISO) valido=snaps[i];
+    else break;
+  }
+  if(!valido) valido=snaps[0]; // antes do primeiro snapshot, usa o mais antigo conhecido
+  return valido.custoUnit;
+}
+
+// custo de uma receita inteira (massa ou recheio de um sabor) na data informada
+function precCustoReceitaNaData(chave,dataISO){
+  var r=PREC_RECEITAS[chave];
+  if(!r) return 0;
+  var total=0;
+  for(var i=0;i<r.itens.length;i++){
+    var item=r.itens[i];
+    total+=item.qtdUsada*precCustoUnitarioIngNaData(item.ingId,dataISO);
+  }
+  return total;
+}
+function precCustoMassaPorBrownieNaData(dataISO){
+  var total=precCustoReceitaNaData("massa",dataISO);
+  var producao=PREC_RECEITAS.massa.producao||1;
+  return total/producao;
+}
+function precCustoRecheioPorBrownieNaData(sabor,dataISO){
+  if(!sabor||!PREC_RECEITAS[sabor]) return 0;
+  var total=precCustoReceitaNaData(sabor,dataISO);
+  var producao=PREC_RECEITAS[sabor].producao||1;
+  return total/producao;
+}
+// custo final por brownie (massa + recheio, sem extras/fixos que nao variam por ingrediente)
+// na data informada — usado para traçar a evolução de custo de cada sabor
+function precCustoSaborNaData(sabor,dataISO){
+  var custMassa=precCustoMassaPorBrownieNaData(dataISO);
+  var custRecheio=sabor?precCustoRecheioPorBrownieNaData(sabor,dataISO):0;
+  return custMassa+custRecheio;
+}
+
+// lista de datas (AAAA-MM-DD) em que QUALQUER ingrediente usado pela receita/sabor mudou de preco
+function precDatasRelevantes(chave){
+  var r=PREC_RECEITAS[chave];
+  if(!r) return [];
+  var ingIds={};
+  for(var i=0;i<r.itens.length;i++) ingIds[r.itens[i].ingId]=1;
+  if(chave!=="massa"){
+    var rm=PREC_RECEITAS.massa;
+    for(var i=0;i<rm.itens.length;i++) ingIds[rm.itens[i].ingId]=1;
+  }
+  var datas={};
+  for(var i=0;i<PREC_HIST_ING.length;i++){
+    if(ingIds[PREC_HIST_ING[i].ingId]) datas[PREC_HIST_ING[i].data]=1;
+  }
+  return Object.keys(datas).sort();
+}
+
+// serie {datas:[...], valores:[...]} do custo de um sabor (ou "massa") ao longo do tempo,
+// incluindo sempre o ponto de hoje no final
+function precSerieEvolucao(chave){
+  var datas=precDatasRelevantes(chave);
+  var hj=hoje();
+  if(datas.indexOf(hj)===-1) datas.push(hj);
+  var valores=datas.map(function(d){
+    return chave==="massa"?precCustoMassaPorBrownieNaData(d):precCustoSaborNaData(chave,d);
+  });
+  return {datas:datas,valores:valores};
+}
+
+// ── PAGINA PRINCIPAL ──
+function pgP(){
+  var h='<div class="subtabs">';
+  var subs=[
+    {k:"ing",l:"Ingredientes"},
+    {k:"massa",l:"Massa"},
+    {k:"recheio",l:"Recheios"},
+    {k:"extras",l:"Custos Extras"},
+    {k:"resultado",l:"Resultado"},
+    {k:"lucro",l:"Lucro Real"},
+    {k:"evolucao",l:"Evolução de Custos"},
+    {k:"historico",l:"Cálculos Salvos"}
+  ];
+  for(var i=0;i<subs.length;i++){
+    h+='<div class="subtab'+(precSub===subs[i].k?" on":"")+'" data-k="'+subs[i].k+'" onclick="precIrSub(this)">'+subs[i].l+'</div>';
+  }
+  h+='</div>';
+
+  if(precSub==="ing") h+=precPgIngredientes();
+  else if(precSub==="massa") h+=precPgMassa();
+  else if(precSub==="recheio") h+=precPgRecheio();
+  else if(precSub==="extras") h+=precPgExtras();
+  else if(precSub==="resultado") h+=precPgResultado();
+  else if(precSub==="lucro") h+=precPgLucroReal();
+  else if(precSub==="evolucao") h+=precPgEvolucao();
+  else if(precSub==="historico") h+=precPgHistorico();
+
+  document.getElementById("pgp").innerHTML='<div class="sect">Precificação</div>'+h;
+}
+function precIrSub(el){
+  precSub=el.getAttribute("data-k");
+  pgP();
+}
+
+// ── 1. INGREDIENTES BASE ──
+function precPgIngredientes(){
+  var h='<div class="card">';
+  h+='<div style="font-size:13px;color:var(--tm);margin-bottom:12px;">Cadastre os ingredientes que você compra, com o tamanho e preço da embalagem. Os custos de receita e recheio são calculados automaticamente a partir daqui.</div>';
+  h+='<button class="btn btn-primary" onclick="mPrecIngrediente()">+ Novo Ingrediente</button>';
+  h+='</div>';
+
+  if(PREC_ING.length===0){
+    h+='<div class="empty"><div class="empty-title">Nenhum ingrediente</div><div class="empty-sub">Adicione seu primeiro ingrediente para começar.</div></div>';
+    return h;
+  }
+
+  var valorTotal=0;
+  for(var i=0;i<PREC_ING.length;i++) valorTotal+=(+PREC_ING[i].valor||0);
+
+  h+='<div class="stat-grid">';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Cadastrados</div><div class="stat-card-val">'+PREC_ING.length+'</div></div>';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Investido</div><div class="stat-card-val">'+BRLp(valorTotal)+'</div></div>';
+  h+='</div>';
+
+  for(var i=0;i<PREC_ING.length;i++){
+    var ing=PREC_ING[i];
+    var cu=precCustoUnitarioIng(ing);
+    h+='<div class="ing-row">';
+    h+='<div class="ing-row-info">';
+    h+='<div class="ing-row-name">'+ing.nome+'</div>';
+    h+='<div class="ing-row-sub">'+ing.qtd+' '+precUnidLabel(ing.unidade)+' = '+BRLp(+ing.valor)+' &middot; R$ '+cu.toFixed(4).replace(".",",")+'/'+precUnidLabel(ing.unidade)+'</div>';
+    h+='</div>';
+    h+='<div style="display:flex;gap:6px;">';
+    h+='<button class="btn-sm" style="background:var(--input-bg);color:var(--tl);" data-id="'+ing.id+'" onclick="mPrecIngrediente(this)">Editar</button>';
+    h+='<button class="btn-sm btn-sm-del" data-id="'+ing.id+'" onclick="precDelIngrediente(this)">Excluir</button>';
+    h+='</div></div>';
+  }
+  return h;
+}
+
+function mPrecIngrediente(el){
+  var editId=el?el.getAttribute("data-id"):null;
+  var ing=editId?precIngById(editId):null;
+  var h='<div class="modal-title">'+(ing?"Editar":"Novo")+' Ingrediente</div>';
+  h+='<div class="fg"><div class="lbl">Nome do Ingrediente</div><input class="inp" id="pi-nome" placeholder="Ex: Ovos, Açúcar, Óleo..." value="'+(ing?ing.nome:"")+'"></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
+  h+='<div class="fg"><div class="lbl">Qtd. Embalagem</div><input class="inp" type="number" id="pi-qtd" placeholder="1000" min="0.01" step="0.01" value="'+(ing?ing.qtd:"")+'"></div>';
+  h+='<div class="fg"><div class="lbl">Unidade</div><select class="inp" id="pi-unidade">';
+  var unidades=[["un","Unidade"],["g","Grama (g)"],["kg","Quilo (kg)"],["ml","Mililitro (ml)"],["l","Litro (L)"]];
+  for(var i=0;i<unidades.length;i++){
+    h+='<option value="'+unidades[i][0]+'"'+(ing&&ing.unidade===unidades[i][0]?" selected":"")+'>'+unidades[i][1]+'</option>';
+  }
+  h+='</select></div></div>';
+  h+='<div class="fg"><div class="lbl">Valor da Embalagem (R$)</div><input class="inp" type="number" id="pi-valor" placeholder="4.00" min="0" step="0.01" value="'+(ing?ing.valor:"")+'"></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">';
+  h+='<button class="btn btn-secondary" onclick="fM()">Cancelar</button>';
+  h+='<button class="btn btn-primary" onclick="sPrecIngrediente(\''+(editId||"")+'\')">Salvar</button>';
+  h+='</div>';
+  aM(h);
+}
+
+function sPrecIngrediente(editId){
+  var nome=document.getElementById("pi-nome").value.trim();
+  var qtd=parseFloat(document.getElementById("pi-qtd").value);
+  var unidade=document.getElementById("pi-unidade").value;
+  var valor=parseFloat(document.getElementById("pi-valor").value);
+
+  if(!nome||!qtd||qtd<=0||isNaN(valor)||valor<0){
+    alert("Preencha todos os campos corretamente.");
+    return;
+  }
+
+  if(editId){
+    var ing=precIngById(editId);
+    if(ing){ ing.nome=nome; ing.qtd=qtd; ing.unidade=unidade; ing.valor=valor; }
+  } else {
+    PREC_ING.push({id:Date.now(), nome:nome, qtd:qtd, unidade:unidade, valor:valor});
+  }
+  precRegistrarHistIng(editId?precIngById(editId):PREC_ING[PREC_ING.length-1]);
+  salvarPrecificacao();
+  fM();
+  pgP();
+}
+
+// registra um snapshot do ingrediente no historico de precos, na data de hoje.
+// se ja existe um snapshot do MESMO ingrediente no MESMO dia, substitui em vez
+// de duplicar (evita poluir o historico quando a pessoa corrige um erro de digitacao).
+function precRegistrarHistIng(ing){
+  if(!ing) return;
+  var hj=hoje();
+  var custoUnit=precCustoUnitarioIng(ing);
+  var idx=PREC_HIST_ING.findIndex(function(h){return h.ingId==ing.id && h.data===hj;});
+  var snap={ingId:ing.id, data:hj, nome:ing.nome, qtd:ing.qtd, unidade:ing.unidade, valor:ing.valor, custoUnit:custoUnit};
+  if(idx>=0) PREC_HIST_ING[idx]=snap;
+  else PREC_HIST_ING.push(snap);
+}
+
+function precDelIngrediente(el){
+  var id=el.getAttribute("data-id");
+  confirmar("Excluir este ingrediente? Ele será removido de qualquer receita ou recheio que o utilize.", function(){
+    PREC_ING=PREC_ING.filter(function(i){return i.id!=id;});
+    // remove tambem dos itens de receita que o referenciam
+    for(var k in PREC_RECEITAS){
+      PREC_RECEITAS[k].itens=PREC_RECEITAS[k].itens.filter(function(it){return it.ingId!=id;});
+    }
+    salvarPrecificacao();
+    pgP();
+  });
+}
+
+// ── 2. RECEITA DA MASSA ──
+function precPgMassa(){
+  var r=PREC_RECEITAS.massa;
+  var h='<div class="card">';
+  h+='<div style="font-size:13px;color:var(--tm);margin-bottom:12px;">Monte aqui a receita-base da massa do brownie e quantos brownies ela rende.</div>';
+  if(PREC_ING.length===0){
+    h+='<div style="font-size:12px;color:var(--amb);">Cadastre ingredientes na aba "Ingredientes" antes de montar a receita.</div>';
+  } else {
+    h+='<button class="btn btn-primary" onclick="mPrecItemReceita(\'massa\')">+ Adicionar Ingrediente</button>';
+  }
+  h+='</div>';
+
+  if(r.itens.length>0){
+    for(var i=0;i<r.itens.length;i++){
+      var item=r.itens[i];
+      var ing=precIngById(item.ingId);
+      var custo=precCustoItem(item);
+      h+='<div class="ing-row">';
+      h+='<div class="ing-row-info">';
+      h+='<div class="ing-row-name">'+(ing?ing.nome:"Ingrediente removido")+'</div>';
+      h+='<div class="ing-row-sub">'+item.qtdUsada+' '+precUnidLabel(item.unidade)+' = '+BRLp(custo)+'</div>';
+      h+='</div>';
+      h+='<button class="btn-sm btn-sm-del" data-idx="'+i+'" onclick="precDelItemReceita(this,\'massa\')">Remover</button>';
+      h+='</div>';
+    }
+  } else {
+    h+='<div class="empty"><div class="empty-title">Receita vazia</div><div class="empty-sub">Adicione os ingredientes usados na massa.</div></div>';
+  }
+
+  var custoTotal=precCustoReceitaTotal("massa");
+  var custoUnit=precCustoMassaPorBrownie();
+
+  h+='<div class="card" style="margin-top:10px;">';
+  h+='<div class="resumo-line"><span class="lbl2">Custo Total da Massa</span><span class="val2">'+BRLp(custoTotal)+'</span></div>';
+  h+='<div class="fg" style="margin-top:10px;margin-bottom:0;"><div class="lbl">Quantidade Produzida (brownies)</div><input class="inp" type="number" min="1" step="1" id="prec-massa-producao" value="'+r.producao+'" onchange="precSetProducaoMassa(this.value)" oninput="precSetProducaoMassa(this.value)"></div>';
+  h+='<div class="resumo-line total" style="margin-top:10px;"><span class="lbl2">Custo da Massa por Brownie</span><span class="val2">'+BRLp(custoUnit)+'</span></div>';
+  h+='</div>';
+  return h;
+}
+function precSetProducaoMassa(v){
+  var n=parseFloat(v);
+  PREC_RECEITAS.massa.producao=(n&&n>0)?n:1;
+  salvarPrecificacao();
+  // atualiza so o resumo sem re-renderizar o input (evita perder o foco)
+  var custoUnit=precCustoMassaPorBrownie();
+  var totEl=document.querySelector("#pgp .resumo-line.total .val2");
+  if(totEl) totEl.textContent=BRLp(custoUnit);
+}
+
+// ── 3. RECHEIOS POR SABOR ──
+function precPgRecheio(){
+  var sabores=precListaSabores();
+  var h='<div class="card">';
+  h+='<div class="fg" style="margin-bottom:0;"><div class="lbl">Sabor do Recheio</div><select class="inp" id="prec-sabor-sel" onchange="precSelSabor(this.value)">';
+  h+='<option value="">-- Selecione um sabor --</option>';
+  for(var i=0;i<sabores.length;i++){
+    h+='<option value="'+sabores[i]+'"'+(precSaborAtual===sabores[i]?" selected":"")+'>'+sabores[i]+'</option>';
+  }
+  h+='</select></div>';
+  h+='<div style="font-size:11px;color:var(--tll);margin-top:8px;">Os sabores vêm do cadastro de Nova Venda. Para adicionar um sabor novo, use "+ Novo Sabor" lá — ele aparecerá aqui automaticamente.</div>';
+  h+='</div>';
+
+  if(!precSaborAtual){
+    h+='<div class="empty"><div class="empty-title">Selecione um sabor</div><div class="empty-sub">Escolha um recheio acima para montar sua receita de custo.</div></div>';
+    return h;
+  }
+
+  if(!PREC_RECEITAS[precSaborAtual]) PREC_RECEITAS[precSaborAtual]={itens:[],producao:12};
+  var r=PREC_RECEITAS[precSaborAtual];
+
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:10px;">Recheio: '+precSaborAtual+'</div>';
+  if(PREC_ING.length===0){
+    h+='<div style="font-size:12px;color:var(--amb);">Cadastre ingredientes na aba "Ingredientes" antes de montar este recheio.</div>';
+  } else {
+    h+='<button class="btn btn-primary" onclick="mPrecItemReceita(\''+precSaborAtual+'\')">+ Adicionar Ingrediente</button>';
+  }
+  h+='</div>';
+
+  if(r.itens.length>0){
+    for(var i=0;i<r.itens.length;i++){
+      var item=r.itens[i];
+      var ing=precIngById(item.ingId);
+      var custo=precCustoItem(item);
+      h+='<div class="ing-row">';
+      h+='<div class="ing-row-info">';
+      h+='<div class="ing-row-name">'+(ing?ing.nome:"Ingrediente removido")+'</div>';
+      h+='<div class="ing-row-sub">'+item.qtdUsada+' '+precUnidLabel(item.unidade)+' = '+BRLp(custo)+'</div>';
+      h+='</div>';
+      h+='<button class="btn-sm btn-sm-del" data-idx="'+i+'" onclick="precDelItemReceita(this,\''+precSaborAtual+'\')">Remover</button>';
+      h+='</div>';
+    }
+  } else {
+    h+='<div class="empty"><div class="empty-title">Recheio vazio</div><div class="empty-sub">Adicione os ingredientes usados neste recheio.</div></div>';
+  }
+
+  var custoTotal=precCustoReceitaTotal(precSaborAtual);
+  var custoUnit=precCustoRecheioPorBrownie(precSaborAtual);
+
+  h+='<div class="card" style="margin-top:10px;">';
+  h+='<div class="resumo-line"><span class="lbl2">Custo Total do Lote</span><span class="val2">'+BRLp(custoTotal)+'</span></div>';
+  h+='<div class="fg" style="margin-top:10px;margin-bottom:0;"><div class="lbl">Rende quantos brownies</div><input class="inp" type="number" min="1" step="1" id="prec-recheio-producao" value="'+r.producao+'" onchange="precSetProducaoRecheio(this.value)" oninput="precSetProducaoRecheio(this.value)"></div>';
+  h+='<div class="resumo-line total" style="margin-top:10px;"><span class="lbl2">Custo do Recheio por Brownie</span><span class="val2">'+BRLp(custoUnit)+'</span></div>';
+  h+='</div>';
+  return h;
+}
+function precSelSabor(v){
+  precSaborAtual=v;
+  pgP();
+}
+function precSetProducaoRecheio(v){
+  var n=parseFloat(v);
+  if(!PREC_RECEITAS[precSaborAtual]) return;
+  PREC_RECEITAS[precSaborAtual].producao=(n&&n>0)?n:1;
+  salvarPrecificacao();
+  var custoUnit=precCustoRecheioPorBrownie(precSaborAtual);
+  var totEl=document.querySelector("#pgp .resumo-line.total .val2");
+  if(totEl) totEl.textContent=BRLp(custoUnit);
+}
+
+// ── modal compartilhado: adicionar ingrediente a uma receita (massa ou recheio[sabor]) ──
+function mPrecItemReceita(chave){
+  var h='<div class="modal-title">Adicionar Ingrediente</div>';
+  h+='<div class="fg"><div class="lbl">Ingrediente</div><select class="inp" id="pir-ing" onchange="precAutoUnidItem()">';
+  h+='<option value="">-- Selecione --</option>';
+  for(var i=0;i<PREC_ING.length;i++){
+    h+='<option value="'+PREC_ING[i].id+'">'+PREC_ING[i].nome+'</option>';
+  }
+  h+='</select></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
+  h+='<div class="fg"><div class="lbl">Quantidade Usada</div><input class="inp" type="number" id="pir-qtd" placeholder="300" min="0.01" step="0.01"></div>';
+  h+='<div class="fg"><div class="lbl">Unidade</div><select class="inp" id="pir-unidade">';
+  var unidades=[["un","Unidade"],["g","Grama (g)"],["kg","Quilo (kg)"],["ml","Mililitro (ml)"],["l","Litro (L)"]];
+  for(var i=0;i<unidades.length;i++) h+='<option value="'+unidades[i][0]+'">'+unidades[i][1]+'</option>';
+  h+='</select></div></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">';
+  h+='<button class="btn btn-secondary" onclick="fM()">Cancelar</button>';
+  h+='<button class="btn btn-primary" onclick="sPrecItemReceita(\''+chave+'\')">Adicionar</button>';
+  h+='</div>';
+  aM(h);
+}
+function precAutoUnidItem(){
+  var id=document.getElementById("pir-ing").value;
+  var ing=precIngById(id);
+  if(ing) document.getElementById("pir-unidade").value=ing.unidade;
+}
+function sPrecItemReceita(chave){
+  var ingId=document.getElementById("pir-ing").value;
+  var qtdUsada=parseFloat(document.getElementById("pir-qtd").value);
+  var unidade=document.getElementById("pir-unidade").value;
+  if(!ingId||!qtdUsada||qtdUsada<=0){
+    alert("Selecione um ingrediente e informe uma quantidade válida.");
+    return;
+  }
+  if(!PREC_RECEITAS[chave]) PREC_RECEITAS[chave]={itens:[],producao:12};
+  PREC_RECEITAS[chave].itens.push({ingId:ingId, qtdUsada:qtdUsada, unidade:unidade});
+  salvarPrecificacao();
+  fM();
+  pgP();
+}
+function precDelItemReceita(el,chave){
+  var idx=+el.getAttribute("data-idx");
+  PREC_RECEITAS[chave].itens.splice(idx,1);
+  salvarPrecificacao();
+  pgP();
+}
+
+// ── 4 e 5. CUSTOS EXTRAS + CONFIGURACAO DO PRODUTO ──
+function precPgExtras(){
+  var p=PREC_PRODUTO;
+  var h='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:10px;">Configuração do Produto</div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
+  h+='<div class="fg"><div class="lbl">Tamanho do Brownie</div><input class="inp" id="pp-tamanho" placeholder="6x6 cm" value="'+p.tamanho+'" onchange="precSetProduto(\'tamanho\',this.value)"></div>';
+  h+='<div class="fg"><div class="lbl">Peso Final (g)</div><input class="inp" type="number" id="pp-peso" min="0" step="1" value="'+p.pesoFinal+'" onchange="precSetProduto(\'pesoFinal\',this.value)"></div>';
+  h+='</div>';
+  h+='<div class="fg" style="margin-bottom:0;"><div class="lbl">Recheio por Brownie (g)</div><input class="inp" type="number" id="pp-recheio" min="0" step="1" value="'+p.qtdRecheio+'" onchange="precSetProduto(\'qtdRecheio\',this.value)"></div>';
+  h+='</div>';
+
+  var e=PREC_EXTRAS;
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:10px;">Custos Extras (por brownie)</div>';
+  var campos=[["embalagem","Embalagem"],["adesivo","Adesivo"],["etiqueta","Etiqueta Nutricional"],["sacola","Sacola"],["entrega","Taxa de Entrega"],["outros","Outros Custos"]];
+  for(var i=0;i<campos.length;i++){
+    h+='<div class="fg"><div class="lbl">'+campos[i][1]+' (R$)</div><input class="inp" type="number" min="0" step="0.01" id="pe-'+campos[i][0]+'" value="'+e[campos[i][0]]+'" onchange="precSetExtra(\''+campos[i][0]+'\',this.value)" oninput="precSetExtra(\''+campos[i][0]+'\',this.value)"></div>';
+  }
+  h+='<div class="resumo-line total" style="margin-top:4px;"><span class="lbl2">Total de Custos Extras</span><span class="val2" id="pe-total">'+BRLp(precCustoExtrasPorBrownie())+'</span></div>';
+  h+='</div>';
+
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:4px;">Perda na Produção</div>';
+  h+='<div style="font-size:12px;color:var(--tm);margin-bottom:12px;">Percentual de brownies/recheio que se perdem (queimou, errou a receita, sobrou na tigela). Isso aumenta um pouco o custo de massa e recheio de cada brownie, já que parte do que você produz não chega a ser vendida.</div>';
+  h+='<div class="fg" style="margin-bottom:0;"><div class="lbl">Perda Estimada (%)</div><input class="inp" type="number" min="0" max="90" step="0.5" id="pp-perda" value="'+PREC_PERDA+'" onchange="precSetPerda(this.value)" oninput="precSetPerda(this.value)"></div>';
+  h+='<div class="resumo-line" style="margin-top:10px;"><span class="lbl2">Fator de ajuste</span><span class="val2" id="pp-fator">×'+precFatorPerda().toFixed(3)+'</span></div>';
+  h+='<div style="font-size:11px;color:var(--tll);margin-top:4px;">Deixe em 0% se você não costuma ter perdas relevantes.</div>';
+  h+='</div>';
+
+  var f=PREC_FIXOS;
+  var qtdMes=precQtdVendidaMesAtual();
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:4px;">Custos Fixos do Mês</div>';
+  h+='<div style="font-size:12px;color:var(--tm);margin-bottom:12px;">Gastos que existem mesmo sem vender nada: aluguel, gás, luz, internet, taxas de maquininha/app. Eles são divididos pela sua produção do mês para entrar no custo real de cada brownie.</div>';
+  var camposFixos=[["aluguel","Aluguel"],["gas","Gás"],["luz","Luz/Energia"],["internet","Internet"],["taxas","Taxas (maquininha/app)"],["outros","Outros Fixos"]];
+  for(var i=0;i<camposFixos.length;i++){
+    h+='<div class="fg"><div class="lbl">'+camposFixos[i][1]+' (R$/mês)</div><input class="inp" type="number" min="0" step="0.01" id="pf-'+camposFixos[i][0]+'" value="'+f[camposFixos[i][0]]+'" onchange="precSetFixo(\''+camposFixos[i][0]+'\',this.value)" oninput="precSetFixo(\''+camposFixos[i][0]+'\',this.value)"></div>';
+  }
+  h+='<div class="resumo-line"><span class="lbl2">Total de Custos Fixos</span><span class="val2" id="pf-total">'+BRLp(precCustoFixoTotalMes())+'</span></div>';
+  h+='<div class="resumo-line"><span class="lbl2">Brownies vendidos este mês</span><span class="val2" id="pf-qtdmes">'+qtdMes+(qtdMes===0?" (estimativa)":"")+'</span></div>';
+  h+='<div class="resumo-line total"><span class="lbl2">Custo Fixo por Brownie</span><span class="val2" id="pf-unit">'+BRLp(precCustoFixoPorBrownie())+'</span></div>';
+  h+='</div>';
+  return h;
+}
+function precSetFixo(campo,v){
+  PREC_FIXOS[campo]=parseFloat(v)||0;
+  salvarPrecificacao();
+  var totEl=document.getElementById("pf-total");
+  if(totEl) totEl.textContent=BRLp(precCustoFixoTotalMes());
+  var unitEl=document.getElementById("pf-unit");
+  if(unitEl) unitEl.textContent=BRLp(precCustoFixoPorBrownie());
+}
+function precSetProduto(campo,v){
+  if(campo==="tamanho") PREC_PRODUTO.tamanho=v;
+  else PREC_PRODUTO[campo]=parseFloat(v)||0;
+  salvarPrecificacao();
+}
+function precSetExtra(campo,v){
+  PREC_EXTRAS[campo]=parseFloat(v)||0;
+  salvarPrecificacao();
+  var totEl=document.getElementById("pe-total");
+  if(totEl) totEl.textContent=BRLp(precCustoExtrasPorBrownie());
+}
+function precSetPerda(v){
+  var n=parseFloat(v);
+  if(isNaN(n)||n<0) n=0;
+  if(n>90) n=90;
+  PREC_PERDA=n;
+  salvarPrecificacao();
+  var fatorEl=document.getElementById("pp-fator");
+  if(fatorEl) fatorEl.textContent="×"+precFatorPerda().toFixed(3);
+}
+
+// ── 6/7/8. CALCULO FINAL + PRECIFICACAO + DASHBOARD ──
+function precPgResultado(){
+  var tipos=TIPOS.map(function(t){return t.t;});
+  var h='<div class="card">';
+  h+='<div class="fg" style="margin-bottom:0;"><div class="lbl">Tipo de Brownie</div><select class="inp" id="prec-tipo-sel" onchange="precSelTipoResultado(this.value)">';
+  for(var i=0;i<tipos.length;i++){
+    h+='<option value="'+tipos[i]+'"'+(precTipoResultado===tipos[i]?" selected":"")+'>'+tipos[i]+'</option>';
+  }
+  h+='</select></div>';
+  h+='</div>';
+
+  var sabor="";
+  if(precTipoResultado!=="Tradicional"){
+    var saboresDoTipo=SABORES[precTipoResultado]||[];
+    h+='<div class="card">';
+    h+='<div class="fg" style="margin-bottom:0;"><div class="lbl">Sabor do Recheio</div><select class="inp" id="prec-sabor-result" onchange="pgP()">';
+    h+='<option value="">-- Sem recheio cadastrado --</option>';
+    for(var i=0;i<saboresDoTipo.length;i++){
+      h+='<option value="'+saboresDoTipo[i]+'">'+saboresDoTipo[i]+'</option>';
+    }
+    h+='</select></div></div>';
+    var selEl=document.getElementById("prec-sabor-result");
+    sabor=selEl?selEl.value:(saboresDoTipo[0]||"");
+  }
+
+  var custMassa=precCustoMassaPorBrownieComPerda();
+  var custRecheio=precCustoRecheioPorBrownieComPerda(sabor);
+  var custExtras=precCustoExtrasPorBrownie();
+  var custFixo=precCustoFixoPorBrownie();
+  var custTotal=custMassa+custRecheio+custExtras+custFixo;
+
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:6px;">Custo Real do Brownie</div>';
+  h+='<div class="resumo-line"><span class="lbl2">Custo da Massa'+(PREC_PERDA>0?" (com perda)":"")+'</span><span class="val2">'+BRLp(custMassa)+'</span></div>';
+  h+='<div class="resumo-line"><span class="lbl2">Custo do Recheio'+(sabor?" ("+sabor+")":"")+(PREC_PERDA>0?" (com perda)":"")+'</span><span class="val2">'+BRLp(custRecheio)+'</span></div>';
+  h+='<div class="resumo-line"><span class="lbl2">Custos Extras</span><span class="val2">'+BRLp(custExtras)+'</span></div>';
+  h+='<div class="resumo-line"><span class="lbl2">Custos Fixos (rateado)</span><span class="val2">'+BRLp(custFixo)+'</span></div>';
+  h+='<div class="resumo-line total"><span class="lbl2">CUSTO REAL TOTAL</span><span class="val2">'+BRLp(custTotal)+'</span></div>';
+  h+='</div>';
+
+  var precoSalvo=PREC_PRECOS[precTipoResultado];
+  var tipoInfo=TIPOS.find(function(t){return t.t===precTipoResultado;});
+  var precoVenda=(precoSalvo!==undefined&&precoSalvo!==null)?precoSalvo:(tipoInfo?tipoInfo.p:0);
+
+  var mostraAlerta=precoVenda>0 && precoVenda<custTotal;
+  h+='<div class="card" id="prec-alerta-prejuizo" style="background:var(--red-bg);border:1px solid var(--red);'+(mostraAlerta?"":"display:none;")+'">';
+  h+='<div style="font-weight:700;color:var(--red);margin-bottom:4px;">⚠️ Vendendo no prejuízo</div>';
+  h+='<div class="prec-alerta-texto" style="font-size:13px;color:var(--red);">Seu preço de venda ('+BRLp(precoVenda)+') está abaixo do custo real ('+BRLp(custTotal)+'). Você perde '+BRLp(custTotal-precoVenda)+' em cada unidade vendida.</div>';
+  h+='</div>';
+
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:10px;">Precificação</div>';
+  h+='<div class="fg" style="margin-bottom:0;"><div class="lbl">Preço de Venda (R$)</div><input class="inp" type="number" min="0" step="0.01" id="prec-preco-venda" value="'+precoVenda+'" onchange="precSetPrecoVenda(this.value)" oninput="precSetPrecoVenda(this.value)"></div>';
+  h+='</div>';
+
+  var lucroUnit=precoVenda-custTotal;
+  var lucroPct=precoVenda>0?((lucroUnit/precoVenda)*100):0;
+  var negClass=lucroUnit<0?" neg":"";
+
+  h+='<div class="card" id="prec-dash">';
+  h+=precDashHTML(lucroUnit,lucroPct,custTotal,precoVenda,custMassa,custRecheio,custExtras);
+  h+='</div>';
+
+  h+='<button class="btn btn-secondary-page" style="margin-top:4px;" onclick="precSalvarHistorico(\''+precTipoResultado+'\',\''+sabor+'\')">Salvar este cálculo no Histórico</button>';
+
+  return h;
+}
+function precDashHTML(lucroUnit,lucroPct,custTotal,precoVenda,custMassa,custRecheio,custExtras){
+  var negClass=lucroUnit<0?" neg":"";
+  var h='';
+  h+='<div class="stat-grid">';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Custo da Massa</div><div class="stat-card-val">'+BRLp(custMassa)+'</div></div>';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Custo do Recheio</div><div class="stat-card-val">'+BRLp(custRecheio)+'</div></div>';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Custo Total</div><div class="stat-card-val">'+BRLp(custTotal)+'</div></div>';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Preço de Venda</div><div class="stat-card-val">'+BRLp(precoVenda)+'</div></div>';
+  h+='</div>';
+  h+='<div class="lucro-grid">';
+  h+='<div class="lucro-card'+negClass+'"><div class="lbl">Lucro/Unidade</div><div class="val">'+BRLp(lucroUnit)+'</div></div>';
+  h+='<div class="lucro-card'+negClass+'"><div class="lbl">Margem</div><div class="val">'+lucroPct.toFixed(1)+'%</div></div>';
+  h+='<div class="lucro-card'+negClass+'"><div class="lbl">Lucro em 10 un.</div><div class="val">'+BRLp(lucroUnit*10)+'</div></div>';
+  h+='<div class="lucro-card'+negClass+'"><div class="lbl">Lucro em 25 un.</div><div class="val">'+BRLp(lucroUnit*25)+'</div></div>';
+  h+='<div class="lucro-card'+negClass+'"><div class="lbl">Lucro em 50 un.</div><div class="val">'+BRLp(lucroUnit*50)+'</div></div>';
+  h+='<div class="lucro-card'+negClass+'"><div class="lbl">Lucro em 100 un.</div><div class="val">'+BRLp(lucroUnit*100)+'</div></div>';
+  h+='</div>';
+  return h;
+}
+function precSelTipoResultado(v){
+  precTipoResultado=v;
+  pgP();
+}
+function precSetPrecoVenda(v){
+  var n=parseFloat(v);
+  PREC_PRECOS[precTipoResultado]=isNaN(n)?0:n;
+  salvarPrecificacao();
+  // recalcula so o dashboard e o banner de alerta, sem perder o foco do input
+  var sel=document.getElementById("prec-sabor-result");
+  var sabor=sel?sel.value:"";
+  var custMassa=precCustoMassaPorBrownieComPerda();
+  var custRecheio=precCustoRecheioPorBrownieComPerda(sabor);
+  var custExtras=precCustoExtrasPorBrownie();
+  var custFixo=precCustoFixoPorBrownie();
+  var custTotal=custMassa+custRecheio+custExtras+custFixo;
+  var precoVenda=PREC_PRECOS[precTipoResultado]||0;
+  var lucroUnit=precoVenda-custTotal;
+  var lucroPct=precoVenda>0?((lucroUnit/precoVenda)*100):0;
+  var dashEl=document.getElementById("prec-dash");
+  if(dashEl) dashEl.innerHTML=precDashHTML(lucroUnit,lucroPct,custTotal,precoVenda,custMassa,custRecheio,custExtras);
+  var alertaEl=document.getElementById("prec-alerta-prejuizo");
+  if(alertaEl){
+    if(precoVenda>0 && precoVenda<custTotal){
+      alertaEl.style.display="block";
+      alertaEl.querySelector(".prec-alerta-texto").textContent="Seu preço de venda ("+BRLp(precoVenda)+") está abaixo do custo real ("+BRLp(custTotal)+"). Você perde "+BRLp(custTotal-precoVenda)+" em cada unidade vendida.";
+    } else {
+      alertaEl.style.display="none";
+    }
+  }
+}
+
+// ── HISTORICO ──
+function precSalvarHistorico(tipo,sabor){
+  var custMassa=precCustoMassaPorBrownieComPerda();
+  var custRecheio=precCustoRecheioPorBrownieComPerda(sabor);
+  var custExtras=precCustoExtrasPorBrownie();
+  var custFixo=precCustoFixoPorBrownie();
+  var custTotal=custMassa+custRecheio+custExtras+custFixo;
+  var precoVenda=PREC_PRECOS[tipo]||0;
+  var lucroUnit=precoVenda-custTotal;
+  precHistorico.unshift({
+    id:Date.now(), data:hoje(), tipo:tipo, sabor:sabor,
+    custMassa:custMassa, custRecheio:custRecheio, custExtras:custExtras, custFixo:custFixo,
+    custTotal:custTotal, precoVenda:precoVenda, lucroUnit:lucroUnit
+  });
+  if(precHistorico.length>50) precHistorico=precHistorico.slice(0,50);
+  salvarPrecificacao();
+  alert("Cálculo salvo no histórico!");
+  precSub="historico";
+  pgP();
+}
+// ── LUCRO REAL DO MES ──
+function precPgLucroReal(){
+  var dados=precLucroRealMes();
+  var hj=hoje();
+  var mesNome=MESES[+hj.slice(5,7)-1];
+
+  var h='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:4px;">Lucro Real — '+mesNome+'</div>';
+  h+='<div style="font-size:12px;color:var(--tm);margin-bottom:12px;">Cruza as vendas que você já registrou no Diário com o custo real calculado de cada brownie (massa + recheio + extras + custos fixos rateados).</div>';
+
+  if(dados.qtd===0){
+    h+='<div class="empty"><div class="empty-title">Sem vendas este mês ainda</div><div class="empty-sub">Registre vendas em "Nova Venda" para ver seu lucro real aqui.</div></div>';
+    h+='</div>';
+    return h;
+  }
+
+  h+='<div class="stat-grid">';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Faturamento</div><div class="stat-card-val">'+BRLp(dados.faturamento)+'</div><div class="stat-card-sub">'+dados.qtd+' brownies</div></div>';
+  h+='<div class="stat-card"><div class="stat-card-lbl">Custo Real Total</div><div class="stat-card-val">'+BRLp(dados.custoTotal)+'</div></div>';
+  h+='</div>';
+
+  var negClass=dados.lucroTotal<0?" neg":"";
+  h+='<div class="lucro-grid" style="grid-template-columns:1fr;margin-top:10px;">';
+  h+='<div class="lucro-card'+negClass+'"><div class="lbl">Lucro Líquido do Mês</div><div class="val" style="font-size:22px;">'+BRLp(dados.lucroTotal)+'</div></div>';
+  h+='</div>';
+  h+='</div>';
+
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:10px;">Lucro por Sabor</div>';
+  for(var i=0;i<dados.porSabor.length;i++){
+    var s=dados.porSabor[i];
+    var nomeExibicao=s.tipo==="Tradicional"?"Tradicional":s.tipo+" — "+s.sabor;
+    var negS=s.lucroTotal<0?"var(--red)":"var(--grn)";
+    h+='<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--brd);">';
+    h+='<div style="display:flex;justify-content:space-between;margin-bottom:4px;">';
+    h+='<span style="font-size:13px;font-weight:600;color:var(--td);">'+nomeExibicao+'</span>';
+    h+='<span style="font-size:13px;font-weight:700;color:'+negS+';">'+BRLp(s.lucroTotal)+'</span>';
+    h+='</div>';
+    h+='<div style="font-size:11px;color:var(--tm);">'+s.qtd+'x vendidos &middot; faturou '+BRLp(s.faturamento)+' &middot; custo unit. '+BRLp(s.custoUnit)+' &middot; lucro/un. '+BRLp(s.lucroUnit)+'</div>';
+    h+='</div>';
+  }
+  h+='</div>';
+
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:8px;">Como o custo fixo entra na conta</div>';
+  h+='<div class="resumo-line"><span class="lbl2">Custos fixos cadastrados (mês)</span><span class="val2">'+BRLp(dados.custoFixoMes)+'</span></div>';
+  h+='<div class="resumo-line"><span class="lbl2">Dividido por</span><span class="val2">'+dados.qtd+' brownies vendidos</span></div>';
+  h+='<div class="resumo-line total"><span class="lbl2">Custo fixo por brownie</span><span class="val2">'+BRLp(precCustoFixoPorBrownie())+'</span></div>';
+  h+='</div>';
+
+  return h;
+}
+
+function precPgEvolucao(){
+  var sabores=precListaSabores();
+  var h='<div class="card">';
+  h+='<div style="font-size:13px;color:var(--tm);margin-bottom:12px;">Veja como o custo de cada sabor mudou ao longo do tempo, conforme você atualiza o preço dos ingredientes.</div>';
+  h+='<div class="fg" style="margin-bottom:0;"><div class="lbl">Sabor</div><select class="inp" id="evol-sel" onchange="evolSelSabor(this.value)">';
+  h+='<option value="massa"'+(evolEscopo==="massa"?" selected":"")+'>Massa (base, sem recheio)</option>';
+  for(var i=0;i<sabores.length;i++){
+    h+='<option value="'+sabores[i]+'"'+(evolEscopo===sabores[i]?" selected":"")+'>'+sabores[i]+' (massa + recheio)</option>';
+  }
+  h+='</select></div>';
+  h+='</div>';
+
+  if(!evolEscopo){
+    h+='<div class="empty"><div class="empty-title">Selecione um sabor</div><div class="empty-sub">Escolha acima para ver a evolução de custo.</div></div>';
+    return h;
+  }
+
+  var serie=precSerieEvolucao(evolEscopo);
+  if(serie.datas.length<2){
+    h+='<div class="empty"><div class="empty-title">Ainda sem histórico suficiente</div><div class="empty-sub">Edite o preço de um ingrediente usado neste sabor para começar a registrar a evolução. Cada edição salva automaticamente um novo ponto aqui.</div></div>';
+    return h;
+  }
+
+  // grafico de linha (SVG simples, desenhado direto no app)
+  h+='<div class="card" style="margin-bottom:10px;">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:10px;">Custo por brownie — '+(evolEscopo==="massa"?"Massa":evolEscopo)+'</div>';
+  h+=precSvgEvolucao(serie);
+  h+='</div>';
+
+  // lista com variacao percentual entre pontos consecutivos
+  h+='<div class="card">';
+  h+='<div style="font-weight:700;color:var(--td);margin-bottom:10px;">Linha do Tempo</div>';
+  for(var i=serie.datas.length-1;i>=0;i--){
+    var val=serie.valores[i];
+    var varTxt="", varCor="var(--tm)";
+    if(i>0){
+      var ant=serie.valores[i-1];
+      if(ant>0){
+        var pct=((val-ant)/ant*100);
+        var seta=pct>=0?"▲":"▼";
+        varCor=pct>0?"var(--red)":(pct<0?"var(--grn)":"var(--tm)");
+        varTxt=seta+" "+Math.abs(pct).toFixed(1)+"% em relação ao ponto anterior";
+      }
+    } else {
+      varTxt="Primeiro registro conhecido";
+    }
+    var isHoje=serie.datas[i]===hoje();
+    h+='<div class="resumo-line" style="border-bottom:1px solid rgba(90,58,26,.08);padding:8px 0;">';
+    h+='<span class="lbl2">'+fD(serie.datas[i])+(isHoje?" (hoje)":"")+'</span>';
+    h+='<span class="val2" style="text-align:right;">'+BRLp(val)+'<div style="font-size:10px;color:'+varCor+';font-weight:600;margin-top:2px;">'+varTxt+'</div></span>';
+    h+='</div>';
+  }
+  h+='</div>';
+
+  return h;
+}
+function evolSelSabor(v){
+  evolEscopo=v;
+  pgP();
+}
+
+// gera um grafico de linha simples em SVG, sem dependencias externas
+function precSvgEvolucao(serie){
+  var w=300, h=140, padL=44, padR=12, padT=14, padB=24;
+  var innerW=w-padL-padR, innerH=h-padT-padB;
+  var max=Math.max.apply(null,serie.valores), min=Math.min.apply(null,serie.valores);
+  if(max===min){ max=max+1; min=Math.max(0,min-1); }
+  var n=serie.valores.length;
+  function px(i){ return padL+(n<=1?0:(i/(n-1))*innerW); }
+  function py(v){ return padT+innerH-((v-min)/(max-min))*innerH; }
+
+  var pontos=[];
+  for(var i=0;i<n;i++) pontos.push(px(i)+","+py(serie.valores[i]));
+  var linha=pontos.join(" ");
+
+  var svg='<svg viewBox="0 0 '+w+' '+h+'" style="width:100%;height:140px;" preserveAspectRatio="none">';
+  // linhas guia horizontais (min e max)
+  svg+='<line x1="'+padL+'" y1="'+py(max)+'" x2="'+(w-padR)+'" y2="'+py(max)+'" stroke="rgba(90,58,26,.12)" stroke-width="1"/>';
+  svg+='<line x1="'+padL+'" y1="'+py(min)+'" x2="'+(w-padR)+'" y2="'+py(min)+'" stroke="rgba(90,58,26,.12)" stroke-width="1"/>';
+  svg+='<text x="2" y="'+(py(max)+4)+'" font-size="9" fill="#8A6B4E">'+BRLp(max)+'</text>';
+  svg+='<text x="2" y="'+(py(min)+4)+'" font-size="9" fill="#8A6B4E">'+BRLp(min)+'</text>';
+  // linha do grafico
+  svg+='<polyline points="'+linha+'" fill="none" stroke="#B8862B" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+  // pontos
+  for(var i=0;i<n;i++){
+    svg+='<circle cx="'+px(i)+'" cy="'+py(serie.valores[i])+'" r="3.5" fill="#B8862B"/>';
+  }
+  svg+='</svg>';
+
+  // legenda de datas (primeira e ultima, pra nao poluir em telas pequenas)
+  svg+='<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--tm);margin-top:2px;">';
+  svg+='<span>'+fD(serie.datas[0])+'</span><span>'+fD(serie.datas[n-1])+'</span>';
+  svg+='</div>';
+  return svg;
+}
+
+function precPgHistorico(){
+  if(precHistorico.length===0){
+    return '<div class="empty"><div class="empty-title">Sem histórico ainda</div><div class="empty-sub">Salve um cálculo na aba "Resultado" para vê-lo aqui.</div></div>';
+  }
+  var h='';
+  for(var i=0;i<precHistorico.length;i++){
+    var r=precHistorico[i];
+    var negClass=r.lucroUnit<0?"var(--red)":"var(--grn)";
+    h+='<div class="card" style="margin-bottom:8px;">';
+    h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;">';
+    h+='<div>';
+    h+='<div style="font-weight:700;color:var(--td);">'+r.tipo+(r.sabor?" — "+r.sabor:"")+'</div>';
+    h+='<div style="font-size:11px;color:var(--tm);">'+fD(r.data)+'</div>';
+    h+='</div>';
+    h+='<button class="btn-sm btn-sm-del" data-id="'+r.id+'" onclick="precDelHistorico(this)">✕</button>';
+    h+='</div>';
+    h+='<div class="resumo-line" style="margin-top:6px;"><span class="lbl2">Custo Real</span><span class="val2">'+BRLp(r.custTotal)+'</span></div>';
+    h+='<div class="resumo-line"><span class="lbl2">Preço de Venda</span><span class="val2">'+BRLp(r.precoVenda)+'</span></div>';
+    h+='<div class="resumo-line"><span class="lbl2">Lucro/Unidade</span><span class="val2" style="color:'+negClass+';">'+BRLp(r.lucroUnit)+'</span></div>';
+    h+='</div>';
+  }
+  return h;
+}
+function precDelHistorico(el){
+  var id=el.getAttribute("data-id");
+  precHistorico=precHistorico.filter(function(r){return r.id!=id;});
+  salvarPrecificacao();
+  pgP();
 }
 
 // ══════════════════════════════════════════════
@@ -1553,7 +3251,7 @@ function mPag(cid){
   var dev=devidoCli(cid);
   var h='<div class="modal-title">Registrar Pagamento</div>';
   h+='<div style="background:#E4D8C0;border-radius:10px;padding:12px;margin-bottom:16px;">';
-  h+='<div style="font-size:13px;font-weight:600;color:#4A2A0A;margin-bottom:2px;">'+c.nome+'</div>';
+  h+='<div style="font-size:13px;font-weight:600;color:#5A3A1A;margin-bottom:2px;">'+c.nome+'</div>';
   if(dev>0) h+='<div style="font-size:16px;font-weight:800;color:#7A4A00;">Em aberto: '+BRL(dev)+'</div>';
   else h+='<div style="font-size:14px;font-weight:600;color:#1A5C2E;">Sem pendências</div>';
   h+='</div>';
@@ -1797,6 +3495,81 @@ function copiarTextoSincrono(texto){
 var _store={};
 function _set(k,v){try{localStorage.setItem(k,v);}catch(e){_store[k]=v;}}
 function _get(k){try{return localStorage.getItem(k);}catch(e){return _store[k]||null;}}
+// ══════════════════════════════════════════════
+//  BACKUP / EXPORTAR / IMPORTAR
+// ══════════════════════════════════════════════
+var BACKUP_KEYS = ["bl_cli","bl_vnd","bl_pag","bl_nextId","bl_sabores","bl_estoque",
+  "bl_precIng","bl_precReceitas","bl_precExtras","bl_precProduto","bl_precPrecos",
+  "bl_precFixos","bl_precHistorico","bl_precHistIng","bl_tema","bl_despesas","bl_precPerda"];
+
+function exportarBackup(){
+  try{
+    var dados={};
+    for(var i=0;i<BACKUP_KEYS.length;i++){
+      var k=BACKUP_KEYS[i];
+      var v=_get(k);
+      if(v!==null && v!==undefined) dados[k]=v;
+    }
+    var pacote={
+      app:"Brownielicia",
+      versao:"20260626014500",
+      exportadoEm:new Date().toISOString(),
+      dados:dados
+    };
+    var json=JSON.stringify(pacote,null,2);
+    var blob=new Blob([json],{type:"application/json"});
+    var url=URL.createObjectURL(blob);
+    var dataStr=hoje().split("-").reverse().join("-"); // DD-MM-AAAA
+    var a=document.createElement("a");
+    a.href=url;
+    a.download="brownielicia-backup-"+dataStr+".json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    var statusEl=document.getElementById("backup-status");
+    if(statusEl){ statusEl.style.color="var(--grn)"; statusEl.textContent="Backup exportado com sucesso!"; }
+  }catch(e){
+    var statusEl=document.getElementById("backup-status");
+    if(statusEl){ statusEl.style.color="var(--red)"; statusEl.textContent="Erro ao exportar: "+e.message; }
+  }
+}
+
+function importarBackup(inputEl){
+  var file=inputEl.files && inputEl.files[0];
+  if(!file) return;
+  var statusEl=document.getElementById("backup-status");
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var pacote=JSON.parse(e.target.result);
+      if(!pacote || !pacote.dados || pacote.app!=="Brownielicia"){
+        if(statusEl){ statusEl.style.color="var(--red)"; statusEl.textContent="Arquivo inválido. Selecione um backup exportado pelo Brownielícia."; }
+        return;
+      }
+      var dataInfo=pacote.exportadoEm?new Date(pacote.exportadoEm).toLocaleDateString("pt-BR"):"data desconhecida";
+      confirmar("Importar este backup (exportado em "+dataInfo+") vai substituir TODOS os dados atuais do app (vendas, clientes, precificação). Esta ação não pode ser desfeita. Continuar?", function(){
+        try{
+          for(var k in pacote.dados){
+            _set(k, pacote.dados[k]);
+          }
+          if(statusEl){ statusEl.style.color="var(--grn)"; statusEl.textContent="Backup importado! Recarregando o app..."; }
+          setTimeout(function(){ location.reload(); }, 1200);
+        }catch(err){
+          if(statusEl){ statusEl.style.color="var(--red)"; statusEl.textContent="Erro ao importar: "+err.message; }
+        }
+      });
+    }catch(err){
+      if(statusEl){ statusEl.style.color="var(--red)"; statusEl.textContent="Não foi possível ler o arquivo. Verifique se é um backup válido."; }
+    }
+    inputEl.value="";
+  };
+  reader.onerror=function(){
+    if(statusEl){ statusEl.style.color="var(--red)"; statusEl.textContent="Erro ao ler o arquivo."; }
+  };
+  reader.readAsText(file);
+}
+
 function salvar(){
   try{
     _set("bl_cli",JSON.stringify(CLI));
@@ -1813,6 +3586,51 @@ function carregarEstoque(){
   try{
     var e=_get("bl_estoque");
     if(e) ESTOQUE=JSON.parse(e);
+  }catch(e){}
+}
+function salvarDespesas(){
+  try{ _set("bl_despesas",JSON.stringify(DESPESAS)); }catch(e){}
+}
+function carregarDespesas(){
+  try{
+    var d=_get("bl_despesas");
+    if(d) DESPESAS=JSON.parse(d);
+  }catch(e){}
+}
+function salvarPrecificacao(){
+  try{
+    _set("bl_precIng",JSON.stringify(PREC_ING));
+    _set("bl_precReceitas",JSON.stringify(PREC_RECEITAS));
+    _set("bl_precExtras",JSON.stringify(PREC_EXTRAS));
+    _set("bl_precProduto",JSON.stringify(PREC_PRODUTO));
+    _set("bl_precPrecos",JSON.stringify(PREC_PRECOS));
+    _set("bl_precFixos",JSON.stringify(PREC_FIXOS));
+    _set("bl_precPerda",JSON.stringify(PREC_PERDA));
+    _set("bl_precHistorico",JSON.stringify(precHistorico));
+    _set("bl_precHistIng",JSON.stringify(PREC_HIST_ING));
+  }catch(e){}
+}
+function carregarPrecificacao(){
+  try{
+    var i=_get("bl_precIng");
+    var r=_get("bl_precReceitas");
+    var ex=_get("bl_precExtras");
+    var pr=_get("bl_precProduto");
+    var pc=_get("bl_precPrecos");
+    var pf=_get("bl_precFixos");
+    var pp=_get("bl_precPerda");
+    var h=_get("bl_precHistorico");
+    var hi=_get("bl_precHistIng");
+    if(i) PREC_ING=JSON.parse(i);
+    if(r) PREC_RECEITAS=JSON.parse(r);
+    if(ex) PREC_EXTRAS=Object.assign({},PREC_EXTRAS,JSON.parse(ex));
+    if(pr) PREC_PRODUTO=Object.assign({},PREC_PRODUTO,JSON.parse(pr));
+    if(pc) PREC_PRECOS=JSON.parse(pc);
+    if(pf) PREC_FIXOS=Object.assign({},PREC_FIXOS,JSON.parse(pf));
+    if(pp!==null && pp!==undefined) PREC_PERDA=JSON.parse(pp);
+    if(h) precHistorico=JSON.parse(h);
+    if(hi) PREC_HIST_ING=JSON.parse(hi);
+    if(!PREC_RECEITAS.massa) PREC_RECEITAS.massa={itens:[],producao:12};
   }catch(e){}
 }
 function carregar(){
@@ -1864,22 +3682,28 @@ function salvarTema(){
 }
 var TEMAS_BASE = {
   escuro:{
-    bg:"#0E0B08", s1:"#181208", s2:"#221A10", card:"#F4ECD8", card2:"#EAE0C8",
-    cream:"#F4ECD8", td:"#1A0C04", ts:"#4A2A0A", tm:"#7A5030", tl:"#F0E6D0", tll:"#B8A080",
-    grn:"#1A5C2E", grnBg:"#D4EDDA", amb:"#7A4A00", ambBg:"#FDE8C0", red:"#8B1A1A", redBg:"#FAD4D0",
-    brd:"rgba(200,151,42,.15)", headerBg:"rgba(10,7,4,.98)", headerText:"#F4ECD8", headerTextMuted:"#B8A080",
-    modalBg:"#1A1208", modalText:"#F4ECD8", modalTextMuted:"#B8A080", modalBorder:"rgba(200,151,42,.18)",
-    inputBg:"rgba(244,236,216,.06)", chipBg:"rgba(244,236,216,.05)",
-    modalOverlay:"rgba(244,236,216,.07)", modalOverlaySoft:"rgba(244,236,216,.05)"
+    bg:"#1C140B", s1:"#251B0F", s2:"#2E2113", card:"#564024", card2:"#64492A",
+    cream:"#F5ECDA", td:"#F5ECDA", ts:"#E8D9BC", tm:"#C2A87E", tl:"#F5ECDA", tll:"#B89D74",
+    grn:"#5FD089", grnBg:"rgba(95,208,137,.14)", amb:"#F0B23C", ambBg:"rgba(240,178,60,.14)", red:"#F0786B", redBg:"rgba(240,120,107,.14)",
+    prod1:"#C9A876", prod3:"#E08A52",
+    brd:"rgba(217,165,60,.18)", headerBg:"rgba(20,14,8,.98)", headerText:"#F5ECDA", headerTextMuted:"#B89D74",
+    modalBg:"#241A0F", modalText:"#F5ECDA", modalTextMuted:"#B89D74", modalBorder:"rgba(217,165,60,.2)",
+    inputBg:"#1A120A", inputText:"#F5ECDA", inputBorder:"rgba(217,165,60,.22)", inputPlaceholder:"#8A7355",
+    chipBg:"rgba(245,236,218,.06)",
+    modalOverlay:"rgba(245,236,218,.08)", modalOverlaySoft:"rgba(245,236,218,.05)", trackBg:"rgba(245,236,218,.16)",
+    btnLightBg:"rgba(245,236,218,.14)", btnLightBorder:"rgba(245,236,218,.22)"
   },
   claro:{
     bg:"#F5EFE2", s1:"#EDE3CC", s2:"#FFFFFF", card:"#FFFFFF", card2:"#F0E6CC",
     cream:"#3D1F0A", td:"#1A0C04", ts:"#4A2A0A", tm:"#7A5030", tl:"#3D1F0A", tll:"#8A6840",
     grn:"#1A5C2E", grnBg:"#D4EDDA", amb:"#7A4A00", ambBg:"#FDE8C0", red:"#8B1A1A", redBg:"#FAD4D0",
+    prod1:"#8B6340", prod3:"#B5562E",
     brd:"rgba(61,31,10,.22)", headerBg:"rgba(247,241,228,.97)", headerText:"#3D1F0A", headerTextMuted:"#8A6840",
     modalBg:"#FBF7EE", modalText:"#1A0C04", modalTextMuted:"#7A5030", modalBorder:"rgba(61,31,10,.18)",
-    inputBg:"rgba(61,31,10,.06)", chipBg:"rgba(61,31,10,.05)",
-    modalOverlay:"rgba(61,31,10,.07)", modalOverlaySoft:"rgba(61,31,10,.05)"
+    inputBg:"rgba(61,31,10,.06)", inputText:"#1A0C04", inputBorder:"rgba(61,31,10,.18)", inputPlaceholder:"#9C8567",
+    chipBg:"rgba(61,31,10,.05)",
+    modalOverlay:"rgba(61,31,10,.07)", modalOverlaySoft:"rgba(61,31,10,.05)", trackBg:"rgba(61,31,10,.13)",
+    btnLightBg:"rgba(61,31,10,.08)", btnLightBorder:"rgba(61,31,10,.2)"
   }
 };
 function aplicarTema(){
@@ -1905,6 +3729,8 @@ function aplicarTema(){
   r.setProperty("--amb-bg", base.ambBg);
   r.setProperty("--red", base.red);
   r.setProperty("--red-bg", base.redBg);
+  r.setProperty("--prod1", base.prod1);
+  r.setProperty("--prod3", base.prod3);
   r.setProperty("--brd", base.brd);
   r.setProperty("--header-bg", base.headerBg);
   r.setProperty("--header-text", base.headerText);
@@ -1914,9 +3740,15 @@ function aplicarTema(){
   r.setProperty("--modal-text-muted", base.modalTextMuted);
   r.setProperty("--modal-border", base.modalBorder);
   r.setProperty("--input-bg", base.inputBg);
+  r.setProperty("--input-text", base.inputText);
+  r.setProperty("--input-border", base.inputBorder);
+  r.setProperty("--input-placeholder", base.inputPlaceholder);
   r.setProperty("--chip-bg", base.chipBg);
   r.setProperty("--modal-overlay", base.modalOverlay);
   r.setProperty("--modal-overlay-soft", base.modalOverlaySoft);
+  r.setProperty("--track-bg", base.trackBg);
+  r.setProperty("--btn-light-bg", base.btnLightBg);
+  r.setProperty("--btn-light-border", base.btnLightBorder);
   r.setProperty("--gold", claro?tema.goldClaro:tema.goldEscuro);
   r.setProperty("--gold2", claro?tema.gold2Claro:tema.gold2Escuro);
   r.setProperty("--br", claro?tema.brClaro:tema.brEscuro);
@@ -1965,6 +3797,18 @@ function mTema(){
   h+='<button class="btn btn-secondary" onclick="restaurarTema()">Restaurar Padrão</button>';
   h+='<button class="btn btn-primary" onclick="fM()">Concluir</button>';
   h+='</div>';
+
+  h+='<div style="border-top:1px solid var(--modal-border);margin:14px 0;padding-top:14px;">';
+  h+='<div style="font-weight:700;color:var(--modal-text);margin-bottom:4px;">Backup dos Dados</div>';
+  h+='<div style="font-size:12px;color:var(--modal-text-muted);margin-bottom:10px;">Seus dados (vendas, clientes, precificação) ficam salvos só neste celular. Exporte um backup de vez em quando para não correr risco de perder tudo.</div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
+  h+='<button class="btn btn-secondary" onclick="exportarBackup()">Exportar Backup</button>';
+  h+='<button class="btn btn-secondary" onclick="document.getElementById(\'backup-file-input\').click()">Importar Backup</button>';
+  h+='</div>';
+  h+='<input type="file" id="backup-file-input" accept=".json" style="display:none;" onchange="importarBackup(this)">';
+  h+='<div id="backup-status" style="font-size:11px;color:var(--modal-text-muted);margin-top:8px;"></div>';
+  h+='</div>';
+
   h+='<button class="btn btn-secondary" style="margin-bottom:10px;font-size:12px;" onclick="forcarAtualizacao()">Forçar Atualização do App</button>';
   h+='<div style="text-align:center;font-size:10px;color:var(--modal-text-muted);">Versão do app: 20260626014500</div>';
   aM(h);
@@ -2009,11 +3853,16 @@ function render(){
   else if(pgAtual==="r") pgR();
   else if(pgAtual==="a") pgA();
   else if(pgAtual==="e") pgE();
+  else if(pgAtual==="p") pgP();
+  else if(pgAtual==="g") pgG();
+  else if(pgAtual==="t") pgT();
 }
 
 carregar();
 carregarTema();
 carregarEstoque();
+carregarDespesas();
+carregarPrecificacao();
 nData = hoje();
 render();
 var hdBtn=document.getElementById("hd-right-btn");
